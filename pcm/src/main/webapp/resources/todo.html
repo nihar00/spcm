@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<ol>
+<li>put data in database</li>
+<li>database table for consent history</li>
+<li>database table for request history</li>
+<li>name and logout link on each page</li>
+<li>validation of every form for XSS, SQL injection</li>
+<li>patient image upload</li>
+<li>on request record give third option purpose i.e. consent type</li>
+<li>multiple selection of record type</li>
+</ol>
+
+<ol>
+<li>password hash + salt</li>
+<li>SSL</li>
+<li>session management</li>
+<li>database encryption</li>
+<li>key management - key store</li>
+</ol>
+
+<h2>Database Change</h2>
+<ol>
+<li>remove status from Consent</li>
+<li>recordType as string</li>
+<li>Photo BLOB</li>
+<li>Remove consentType recordType from ConsentRequest</li>
+</ol>
+
+<h2>APPROACH</h2>
+<ol>
+<li>database update fields</li>
+<li>based on user role bring home page</li>
+<li>on login put user account in session</li>
+<li>on logout invalidate session and redirect to home page</li>
+<li>admin add doctor and patient</li>
+</ol>
+
+</body>
+</html>
