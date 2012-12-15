@@ -2,6 +2,7 @@ package com.me.src;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -14,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.me.src.dao.ConsentDao;
@@ -68,7 +70,8 @@ public class LoginController {
 	
 	//public String login(@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
 	@RequestMapping(value = "/login.htm", method = RequestMethod.POST)
-	public String processSubmit(@ModelAttribute("userAccount") UserAccount userAccount, BindingResult result, SessionStatus status,Model model, HttpSession session){
+	//@SessionAttributes({"userAccount"})
+	public String processSubmit(HttpServletRequest request, @ModelAttribute("userAccount") UserAccount userAccount, BindingResult result, SessionStatus status,Model model, HttpSession session){
 		logger.info("Login controller");
 		
 		// Initial Configuration
@@ -85,8 +88,9 @@ public class LoginController {
 		
 		UserAccount ua = userAccountDao.getUserAccount(userAccount.getUsername().toLowerCase(), userAccount.getPassword());		
 		if(ua != null) {
-			//logger.info(ua.getPerson().getFirstName() + " " + ua.getPerson().getHospital().getName());
+			request.getSession(true);			
 			session.setAttribute("userAccount", ua);
+			logger.info(ua.getPerson().getFirstName() + " " + ua.getPerson().getHospital().getName());
 			
 			if(ua.getRole().equals(Role.GlobalAdmin.toString())) {
 				return "global-admin/home";
@@ -96,7 +100,7 @@ public class LoginController {
 			}
 			else if(ua.getRole().equals(Role.Doctor.toString())) {
 				//model.addAttribute("patientlist",patientDao.findAll());
-				model.addAttribute("patientlist",patientDao.listPatient(ua.getPerson().getHospital().getId()));
+				model.addAttribute("patientlist", patientDao.listPatient(ua.getPerson().getHospital().getId()));
 				return "doctor/home";
 			}
 			else if(ua.getRole().equals(Role.Patient.toString())) {

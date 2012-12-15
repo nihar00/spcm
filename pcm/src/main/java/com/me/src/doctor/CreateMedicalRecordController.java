@@ -37,28 +37,30 @@ public class CreateMedicalRecordController {
 	MedicalRecordDao medicalRecordDao;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String initForm(ModelMap model, @RequestParam("patientId") Long patientId) {
-		logger.info("for patient: " + patientId);
+	public String initForm(ModelMap model, @RequestParam("patientId") long patientId) {
+		
 		
 		MedicalRecord record = new MedicalRecord();
-		Patient patient = patientDao.findById(patientId);
-		record.setPatient(patient);
-		
+		Patient patient = patientDao.findById(patientId);		
+		//record.setPatient(patient);
 		model.addAttribute("record", record);
+		model.addAttribute("patient", patient);
+		logger.info("for patient: " + patient.getId());
 		
 		return "doctor/create-medical-record";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String processSubmit(@ModelAttribute("record") MedicalRecord record, BindingResult result, HttpSession session) {		
-			
-		logger.info("Medical Record: " + record.getDescription());
+	public String processSubmit(@ModelAttribute("record") MedicalRecord record,@ModelAttribute("patient") Patient patient, BindingResult result, HttpSession session) {		
 		
 		UserAccount ua = (UserAccount)session.getAttribute("userAccount");
-		Doctor doctor = doctorDao.findByPersonId(ua.getPerson().getId());		
+		logger.info("Medical Record: " + record.getDescription() + " " + patient.getId() + " user: " + ua.getPerson().getFirstName());
+		
+		
+		Doctor doctor = doctorDao.findByPersonId(ua.getPerson().getId());
 		record.setDoctor(doctor);
 		record.setDate(new Date());
-		//record.setPatient(patient); already done in GET method
+		record.setPatient(patient); //already done in GET method
 		medicalRecordDao.saveOrUpdate(record);
 		
 		return "doctor/home";
