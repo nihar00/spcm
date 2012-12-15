@@ -76,8 +76,7 @@ a:hover {
 		<div id="bv_Form1"
 			style="position: absolute; background-color: #F0F0F0; left: 400px; top: 372px; width: 583px; height: 523px; z-index: 5">
 
-			<form name="HospitalAdmin" method="post" action=""
-				enctype="text/plain" id="Form1">
+			<form name="HospitalAdmin" method="GET" action="" id="Form1">
 
 				<div id="bv_Image4"
 					style="margin: 0; padding: 0; position: absolute; left: 125px; top: 100px; width: 101px; height: 101px; text-align: left; z-index: 0;">
@@ -88,28 +87,23 @@ a:hover {
 					style="margin: 0; padding: 0; position: absolute; left: 236px; top: 197px; width: 150px; height: 66px; text-align: center; z-index: 1;">
 					<font style="font-size: 13px;" color="#000000" face="Arial">
 
-						<a href="create-medical-record.htm" target="_self">Treat
-							Patient</a><br> <a href="create-consent.htm" target="_self">Create
-							Consent</a><br> <a href="request-record.htm" target="_self">Record
-							Request</a><br>
-
-
+						<input type="submit" value="Treat Patient" formaction="create-medical-record.htm"/>
+						<input type="submit" value="Create Consent" formaction="create-consent.htm"/>
+						<input type="submit" value="Record Request" formaction="request-record.htm"/>
 					</font>
 				</div>
 
 				<div
 					style="position: absolute; left: 235px; top: 142px; width: 148px; height: 18px; border: 1px #C0C0C0 solid; z-index: 2">
-
-					<!-- nihar change -->
+					
 					<c:if test="${!empty patientlist}">
-						<select name="patientList" id="Combobox1"
+						<select name="patientId" id="Combobox1" size=5
 							style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; border-width: 0px; font-family: 'Courier New'; font-size: 16px;">
 							<c:forEach items="${patientlist}" var="pl">
-								<option value="">${pl.id}</option>
+								<option value="${pl.id}">${pl.person.firstName} ${pl.person.lastName}</option>
 							</c:forEach>
 						</select>
 					</c:if>
-					<!-- nihar change -->
 
 				</div>
 				<div id="bv_Text1"

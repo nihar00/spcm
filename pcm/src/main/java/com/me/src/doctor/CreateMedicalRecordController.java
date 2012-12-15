@@ -2,6 +2,8 @@ package com.me.src.doctor;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.me.src.dao.DoctorDao;
 import com.me.src.dao.MedicalRecordDao;
@@ -19,6 +22,7 @@ import com.me.src.dao.PatientDao;
 import com.me.src.pojo.Doctor;
 import com.me.src.pojo.MedicalRecord;
 import com.me.src.pojo.Patient;
+import com.me.src.pojo.UserAccount;
 
 @Controller
 @RequestMapping("/create-medical-record.htm")
@@ -33,22 +37,28 @@ public class CreateMedicalRecordController {
 	MedicalRecordDao medicalRecordDao;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String initForm(ModelMap model) {
+	public String initForm(ModelMap model, @RequestParam("patientId") Long patientId) {
+		logger.info("for patient: " + patientId);
+		
 		MedicalRecord record = new MedicalRecord();
+		Patient patient = patientDao.findById(patientId);
+		record.setPatient(patient);
+		
 		model.addAttribute("record", record);
+		
 		return "doctor/create-medical-record";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String processSubmit(@ModelAttribute("record") MedicalRecord record, BindingResult result, SessionStatus status) {		
+	public String processSubmit(@ModelAttribute("record") MedicalRecord record, BindingResult result, HttpSession session) {		
 			
 		logger.info("Medical Record: " + record.getDescription());
-		Patient patient = patientDao.findById(1);
-		Doctor doctor = doctorDao.findById(1);
 		
+		UserAccount ua = (UserAccount)session.getAttribute("userAccount");
+		Doctor doctor = doctorDao.findByPersonId(ua.getPerson().getId());		
 		record.setDoctor(doctor);
-		record.setPatient(patient);
 		record.setDate(new Date());
+		//record.setPatient(patient); already done in GET method
 		medicalRecordDao.saveOrUpdate(record);
 		
 		return "doctor/home";

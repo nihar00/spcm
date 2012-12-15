@@ -17,8 +17,7 @@ public class PatientDao extends MappedModelDao<Patient> {
 		// TODO Auto-generated method stub
 		return Patient.class;
 	}
-	
-	//nihar changes
+		
 	@SuppressWarnings("unchecked")
 	public List<Patient> listPatient(long hospitalId) {
 		// TODO Auto-generated method stub
@@ -34,21 +33,8 @@ public class PatientDao extends MappedModelDao<Patient> {
 				{
 					resultList.add(patient);
 				}
-			}
-			
-		}
-		
-		return resultList;
-		/*List<Patient> resultList = new ArrayList<Patient>();
-		for(Patient p : list) {
-			if(p.getPerson().getHospital().getId() == hospitalId) {
-				resultList.add(p);
-			}
-		}
-		
-		return resultList;*/
+			}			
+		}		
+		return resultList;		
 	}
-	
-	
-	//nihar changes
 }
