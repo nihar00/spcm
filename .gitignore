@@ -1,3 +1,4 @@
-assets/
-protected/runtime/
-themes/classic/views/
+*.class
+*.DS_Store
+pom.properties
+pcm/target/**
