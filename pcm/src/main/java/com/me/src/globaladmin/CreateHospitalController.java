@@ -52,6 +52,7 @@ public class CreateHospitalController {
 		}
 		
 		hospitalDao.saveOrUpdate(hospitalEnterprise.getHospital());
+		hospitalEnterprise.getUserAccount().getPerson().setHospital(hospitalEnterprise.getHospital());
 		personDao.saveOrUpdate(hospitalEnterprise.getUserAccount().getPerson());
 		hospitalEnterprise.getUserAccount().setRole(Role.Admin.toString());
 		userAccountDao.saveOrUpdate(hospitalEnterprise.getUserAccount());

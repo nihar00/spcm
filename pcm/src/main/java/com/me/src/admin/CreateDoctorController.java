@@ -1,5 +1,7 @@
 package com.me.src.admin;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import com.me.src.dao.DoctorDao;
 import com.me.src.dao.PersonDao;
 import com.me.src.dao.UserAccountDao;
 import com.me.src.pojo.Role;
+import com.me.src.pojo.UserAccount;
 import com.me.src.pojo.command.CreateDoctor;
 
 @Controller
@@ -39,26 +42,23 @@ public class CreateDoctorController {
 	UserAccountDao userAccountDao;
 	//nihar changes
 
-	@RequestMapping(method = RequestMethod.POST)
-	public String processSubmit(@ModelAttribute("createDoctor") CreateDoctor createDoctor, BindingResult result, SessionStatus status) {		
+	@RequestMapping(method = RequestMethod.POST)	
+	public String processSubmit(@ModelAttribute("createDoctor") CreateDoctor createDoctor, BindingResult result, SessionStatus status, HttpSession session) {		
 
-		logger.info("Doctor Name" +createDoctor.getDoctor().getPerson().getFirstName());
+		logger.info("Doctor Name" +createDoctor.getDoctor().getPerson().getFirstName());		
 		
-		
-		//nihar phase 3 changes
 		if(userAccountDao.isUsernameExist(createDoctor.getUserAccount().getUsername().toLowerCase())) {
 			result.rejectValue("userAccount.username","","Username already exist");
 			return "admin/create-doctor";
 		}
-		//nihar phase 3 changes
-
-		//nihar changes 
+		UserAccount ua = (UserAccount)session.getAttribute("userAccount");
+		
 		createDoctor.getUserAccount().setRole(Role.Doctor.toString());
 		createDoctor.getUserAccount().setPerson(createDoctor.getDoctor().getPerson());
+		createDoctor.getUserAccount().getPerson().setHospital(ua.getPerson().getHospital());
 		personDao.saveOrUpdate(createDoctor.getDoctor().getPerson());
 		userAccountDao.saveOrUpdate(createDoctor.getUserAccount());
-		docDao.saveOrUpdate(createDoctor.getDoctor());
-		//nihar changes
+		docDao.saveOrUpdate(createDoctor.getDoctor());		
 
 		return "admin/home";
 	}

@@ -85,7 +85,9 @@ public class LoginController {
 		
 		UserAccount ua = userAccountDao.getUserAccount(userAccount.getUsername().toLowerCase(), userAccount.getPassword());		
 		if(ua != null) {
+			//logger.info(ua.getPerson().getFirstName() + " " + ua.getPerson().getHospital().getName());
 			session.setAttribute("userAccount", ua);
+			
 			if(ua.getRole().equals(Role.GlobalAdmin.toString())) {
 				return "global-admin/home";
 			}
