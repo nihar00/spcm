@@ -19,7 +19,7 @@ import com.me.src.dao.UserAccountDao;
 import com.me.src.pojo.Role;
 import com.me.src.pojo.UserAccount;
 import com.me.src.pojo.command.CreateDoctor;
-
+import com.me.src.security.HashGenerator;
 @Controller
 @RequestMapping("/create-doctor.htm")
 
@@ -52,6 +52,10 @@ public class CreateDoctorController {
 			return "admin/create-doctor";
 		}
 		UserAccount ua = (UserAccount)session.getAttribute("userAccount");
+		
+		//nihar 5 changes
+		createDoctor.getUserAccount().setPassword(HashGenerator.getHashValue(createDoctor.getUserAccount().getPassword()));
+		//nihar 5 changes
 		
 		createDoctor.getUserAccount().setRole(Role.Doctor.toString());
 		createDoctor.getUserAccount().setPerson(createDoctor.getDoctor().getPerson());

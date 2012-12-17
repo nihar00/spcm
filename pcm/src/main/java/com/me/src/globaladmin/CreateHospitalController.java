@@ -16,6 +16,7 @@ import com.me.src.dao.PersonDao;
 import com.me.src.dao.UserAccountDao;
 import com.me.src.pojo.Role;
 import com.me.src.pojo.command.HospitalEnterprise;
+import com.me.src.security.HashGenerator;
 
 @Controller
 @RequestMapping("/create-hospital.htm")
@@ -44,10 +45,11 @@ public class CreateHospitalController {
 		logger.info("Hospital Name" + hospitalEnterprise.getHospital().getName());
 		
 		if(userAccountDao.isUsernameExist(hospitalEnterprise.getUserAccount().getUsername().toLowerCase())) {
+			
 			//nihar phase 3 changes
 			result.rejectValue("userAccount.username", "", "Username already exist");
 			//nihar phase 3 changes
-			//result.reject("userAccount.username", "Username already exist");
+			
 			return "global-admin/create-hospital";
 		}
 		
@@ -55,6 +57,11 @@ public class CreateHospitalController {
 		hospitalEnterprise.getUserAccount().getPerson().setHospital(hospitalEnterprise.getHospital());
 		personDao.saveOrUpdate(hospitalEnterprise.getUserAccount().getPerson());
 		hospitalEnterprise.getUserAccount().setRole(Role.Admin.toString());
+		
+		//nihar 5 changes
+		hospitalEnterprise.getUserAccount().setPassword(HashGenerator.getHashValue(hospitalEnterprise.getUserAccount().getPassword()));
+		//nihar 5 changes
+		
 		userAccountDao.saveOrUpdate(hospitalEnterprise.getUserAccount());
 		
 		

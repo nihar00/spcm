@@ -93,16 +93,18 @@ a:hover {
 				<!-- nihar changes -->
 				<c:if test="${!empty requests}">
 					<table border=1 width="100%">
+						<tr>
+							<th>Record Requested By Hospital</th>
+							<th>Name of the doctor</th>
+						</tr>
 						<c:forEach items="${requests}" var="pl">
-						
+
 							<tr>
-								<td>${pl.consentType}
-								</td>
-								
-								<td>${pl.recordType}
-								</td>
+								<td>${pl.recordRequester.name}</td>
+
+								<td>${pl.requestByUser.person.firstName}</td>
 							</tr>
-							
+
 						</c:forEach>
 					</table>
 				</c:if>

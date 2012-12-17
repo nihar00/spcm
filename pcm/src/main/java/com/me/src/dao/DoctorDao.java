@@ -17,7 +17,7 @@ public class DoctorDao extends MappedModelDao<Doctor> {
 
 	@SuppressWarnings("unchecked")
 	public Doctor findByPersonId(long personId) {
-		Query query = sessionFactory.getCurrentSession().createQuery("from Doctor d where d.person=:personId");
+		Query query = sessionFactory.getCurrentSession().createQuery("from Doctor d where d.person.id=:personId");
 		query.setParameter("personId",personId);
 		List<Doctor> list = query.list();
 

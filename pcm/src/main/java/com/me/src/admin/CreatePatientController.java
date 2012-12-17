@@ -19,6 +19,7 @@ import com.me.src.dao.UserAccountDao;
 import com.me.src.pojo.Role;
 import com.me.src.pojo.UserAccount;
 import com.me.src.pojo.command.CreatePatient;
+import com.me.src.security.HashGenerator;
 
 @Controller
 @RequestMapping("/create-patient.htm")
@@ -50,6 +51,11 @@ public class CreatePatientController {
 		}
 		
 		UserAccount ua = (UserAccount)session.getAttribute("userAccount");		
+		
+		//nihar 5 changes
+		createPatient.getUserAccount().setPassword(HashGenerator.getHashValue(createPatient.getUserAccount().getPassword()));
+		//nihar 5 changes
+		
 		createPatient.getUserAccount().setRole(Role.Patient.toString());
 		createPatient.getUserAccount().setPerson(createPatient.getPatient().getPerson());
 		createPatient.getUserAccount().getPerson().setHospital(ua.getPerson().getHospital());

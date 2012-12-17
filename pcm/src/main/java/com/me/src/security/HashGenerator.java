@@ -61,7 +61,7 @@ public class HashGenerator {
         return sessionId;
     }
     
-    private static String getHashValue(String inputStr) {
+    public static String getHashValue(String inputStr) {
         try {
             //get digest/hash value
             MessageDigest digest = MessageDigest.getInstance(MessageDigestType.SHA_256.toString());

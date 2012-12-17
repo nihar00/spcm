@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
+<!-- nihar 4 change -->
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<!-- nihar 4 change -->
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -95,7 +100,8 @@ a:hover {
 		<div id="bv_Form1"
 			style="position: absolute; background-color: #F0F0F0; left: 400px; top: 372px; width: 583px; height: 523px; z-index: 8">
 
-			<form:form commandName="request" method="post" action="request-record.htm" id="Form1"
+			<form:form commandName="request" method="post"
+				action="request-record.htm" id="Form1"
 				onsubmit="return ValidateHospitalAdmin(this)">
 
 				<div id="bv_Image4"
@@ -109,11 +115,17 @@ a:hover {
 				</div>
 				<div
 					style="position: absolute; left: 313px; top: 134px; width: 148px; height: 18px; border: 1px #C0C0C0 solid; z-index: 2">
-
-					<form:select path="hospitalId" name="hospitalList" size="1"
-						id="Combobox1"
-						style="position:absolute;left:0px;top:0px;width:100%;height:100%;border-width:0px;font-family:'Courier New';font-size:16px;">
-					</form:select>
+					<!-- nihar 4 changes -->
+					<c:if test="${!empty hospitalList}">
+						<form:select path="hospitalId" name="hospitalList" size="1"
+							id="Combobox1"
+							style="position:absolute;left:0px;top:0px;width:100%;height:100%;border-width:0px;font-family:'Courier New';font-size:16px;">
+							<c:forEach items="${hospitalList}" var="pl">
+								<option value="${pl.id}">${pl.name}</option>
+							</c:forEach>	
+						</form:select>
+					</c:if>
+					<!-- nihar 4 changes -->
 
 				</div>
 
@@ -122,7 +134,8 @@ a:hover {
 					style="position: absolute; left: 211px; top: 259px; width: 136px; height: 24px; font-family: Arial; font-size: 13px; z-index: 3">
 				<div id="bv_Text2"
 					style="margin: 0; padding: 0; position: absolute; left: 131px; top: 137px; width: 150px; height: 16px; text-align: left; z-index: 4;">
-					<font style="font-size: 13px" color="#000000" face="Arial">Select Hospital</font>
+					<font style="font-size: 13px" color="#000000" face="Arial">Select
+						Hospital</font>
 				</div>
 				<div id="bv_Text3"
 					style="margin: 0; padding: 0; position: absolute; left: 132px; top: 223px; width: 150px; height: 16px; text-align: left; z-index: 5;">

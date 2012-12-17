@@ -18,10 +18,10 @@ public class ConsentRequestDao extends MappedModelDao<ConsentRequest> {
 	
 	//nihar changes
 		@SuppressWarnings("unchecked")
-		public List<ConsentRequest> listConsentRequest(int patientId) {
+		public List<ConsentRequest> listConsentRequest(long patientId) {
 			// TODO Auto-generated method stub
 			
-			Query query = (Query) sessionFactory.getCurrentSession().createQuery("from ConsentRequest where patient_id=:patientId");
+			Query query = (Query) sessionFactory.getCurrentSession().createQuery("from ConsentRequest cr where cr.patient.id=:patientId");
 			query.setParameter("patientId", patientId);		
 			return query.list();
 		

@@ -15,7 +15,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.me.src.dao.ConsentDao;
@@ -29,6 +28,7 @@ import com.me.src.dao.UserAccountDao;
 import com.me.src.pojo.Person;
 import com.me.src.pojo.Role;
 import com.me.src.pojo.UserAccount;
+import com.me.src.security.HashGenerator;
 
 /**
  * Handles requests for the application home page.
@@ -77,7 +77,7 @@ public class LoginController {
 		// Initial Configuration
 		//initGlobalAdmin();
 				
-		logger.info("Username & Password: " + userAccount.getUsername() + " - " + userAccount.getPassword());		
+		logger.info("Username & Password: " + userAccount.getUsername() + " - " + HashGenerator.getHashValue(userAccount.getPassword()));		
 		
 		//nihar changes
 		
@@ -86,7 +86,7 @@ public class LoginController {
 		
 		//nihar changes
 		
-		UserAccount ua = userAccountDao.getUserAccount(userAccount.getUsername().toLowerCase(), userAccount.getPassword());		
+		UserAccount ua = userAccountDao.getUserAccount(userAccount.getUsername().toLowerCase(), HashGenerator.getHashValue(userAccount.getPassword()));		
 		if(ua != null) {
 			request.getSession(true);			
 			session.setAttribute("userAccount", ua);

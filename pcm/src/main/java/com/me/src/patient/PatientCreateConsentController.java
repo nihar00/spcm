@@ -2,6 +2,8 @@ package com.me.src.patient;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,7 @@ import com.me.src.dao.HospitalDao;
 import com.me.src.dao.PatientDao;
 import com.me.src.dao.UserAccountDao;
 import com.me.src.pojo.Consent;
+import com.me.src.pojo.UserAccount;
 
 @Controller
 @RequestMapping("/patient-create-consent.htm")
@@ -41,13 +44,14 @@ public class PatientCreateConsentController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String processSubmit(@ModelAttribute("consent") Consent consent, BindingResult result, SessionStatus status) {		
+	public String processSubmit(@ModelAttribute("consent") Consent consent, BindingResult result, SessionStatus status,HttpSession session) {		
 	
+		UserAccount ua = (UserAccount)session.getAttribute("userAccount");
 		logger.info("Consent: " + consent.getConsentType());
 		consent.setDate(new Date());
-		consent.setConsentCreatedBy(userAccountDao.findById(2));
-		consent.setPatient(patientDao.findById(1));
-		consent.setHospital(hospitalDao.findById(1));		
+		consent.setConsentCreatedBy(ua);
+		consent.setPatient(patientDao.getPatientFromPersonId(ua.getPerson().getId()));
+		consent.setHospital(hospitalDao.findById(ua.getPerson().getHospital().getId()));		
 		consentDao.saveOrUpdate(consent);
 		
 		return "patient/home";
