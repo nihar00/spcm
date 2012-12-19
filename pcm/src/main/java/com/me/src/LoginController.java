@@ -46,9 +46,9 @@ public class LoginController {
 	@Autowired
 	ConsentDao consentDao;
 	@Autowired
-	ConsentRequestDao consentRequestDao;
-	@Autowired
 	HospitalDao hospitalDao;
+	@Autowired
+	ConsentRequestDao consentRequestDao;
 	@Autowired
 	MedicalRecordDao medicalRecordDao;
 	@Autowired
@@ -79,18 +79,16 @@ public class LoginController {
 				
 		logger.info("Username & Password: " + userAccount.getUsername() + " - " + HashGenerator.getHashValue(userAccount.getPassword()));		
 		
-		//nihar changes
-		
-		//model.addAttribute("patientlist",patientDao.findAll());
-		/*model.addAttribute("patientlist",patientDao.listPatient(1));*/
 		
 		//nihar changes
+		/*HashGenerator.getHashValue(*/
+		//nihar changes
 		
-		UserAccount ua = userAccountDao.getUserAccount(userAccount.getUsername().toLowerCase(), HashGenerator.getHashValue(userAccount.getPassword()));		
+		UserAccount ua = userAccountDao.getUserAccount(userAccount.getUsername().toLowerCase(),HashGenerator.getHashValue(userAccount.getPassword()));		
 		if(ua != null) {
 			request.getSession(true);			
 			session.setAttribute("userAccount", ua);
-			logger.info(ua.getPerson().getFirstName() + " " + ua.getPerson().getHospital().getName());
+			//logger.info(ua.getPerson().getFirstName() + " " + ua.getPerson().getHospital().getName());
 			
 			if(ua.getRole().equals(Role.GlobalAdmin.toString())) {
 				return "global-admin/home";
@@ -110,7 +108,6 @@ public class LoginController {
 		//nihar phase 3 changes
 		else
 		{
-		
 			result.rejectValue("username", "","Invalid Input");
 		}
 		return "login";

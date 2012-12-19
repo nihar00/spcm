@@ -4,15 +4,21 @@
  */
 package com.me.src.security;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.Serializable;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.CertificateException;
 import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.KeySpec;
 
 import javax.crypto.Cipher;
 import javax.crypto.SealedObject;
 import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 
 import sun.misc.BASE64Decoder;
@@ -22,25 +28,15 @@ import sun.misc.BASE64Encoder;
  *
  * @author prakashj
  */
-public class DesEncrypter {
+public class PcmCipher {
 
     private Cipher eCipher;
     private Cipher dCipher;
     final static int ITERATIONS = 13;
     final static byte[] SALT = {(byte) 0xA9, (byte) 0x9B, (byte) 0xC8, (byte) 0x42, (byte) 0x56, (byte) 0x45, (byte) 0xE3, (byte) 0xB3};
 
-    public DesEncrypter(byte[] passPhrase) throws Exception {
-        char [] phrase = new BASE64Encoder().encode(passPhrase).toCharArray();
-        
-        // to resolve : java.security.spec.InvalidKeySpecException: Password is not ASCII
-        for(int i=0; i<phrase.length; i++) {
-            if(phrase[i] == '\n') {
-                phrase[i] = 'n';
-            }
-        }
-        
-        KeySpec keySpec = new PBEKeySpec(phrase, SALT, ITERATIONS);
-        SecretKey key = SecretKeyFactory.getInstance("PBEWithMD5AndDES").generateSecret(keySpec);
+    public PcmCipher(String pass,String keyName) throws Exception {
+        SecretKey key = getSecretKey(pass, keyName);
         eCipher = Cipher.getInstance(key.getAlgorithm());
         dCipher = Cipher.getInstance(key.getAlgorithm());
 
@@ -73,4 +69,43 @@ public class DesEncrypter {
     public Object decrypt(SealedObject obj) throws Exception {
         return obj.getObject(dCipher);
     }
+
+	private SecretKey getSecretKey(String pass,String keyName)
+  	{
+
+  		try {
+
+  			File f = new File("WEB-INF/security/kerberos.jce");
+  			FileInputStream is= new FileInputStream(f);
+
+  			KeyStore keystore = KeyStore.getInstance("JCEKS");
+  			keystore.load(is, pass.toCharArray());
+  			SecretKey k= (SecretKey) keystore.getKey(keyName, pass.toCharArray());
+  			return k;
+
+  		} 
+
+  		catch (FileNotFoundException e1) {
+  			// TODO Auto-generated catch blockr
+  			e1.printStackTrace();
+  		} catch (KeyStoreException e1) {
+  			// TODO Auto-generated catch block
+  			e1.printStackTrace();
+  		} catch (NoSuchAlgorithmException e1) {
+  			// TODO Auto-generated catch block
+  			e1.printStackTrace();
+  		} catch (CertificateException e1) {
+  			// TODO Auto-generated catch block
+  			e1.printStackTrace();
+  		} catch (IOException e1) {
+  			// TODO Auto-generated catch block
+  			e1.printStackTrace();
+  		}catch (UnrecoverableKeyException e) {
+  			// TODO Auto-generated catch block
+  			e.printStackTrace();
+  		}
+
+  		return null;
+  	}
+
 }

@@ -3,11 +3,20 @@ package com.me.src.pojo;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Type;
+
 @Entity
 public class ConsentRequest extends MappedModel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@OneToOne
 	private Patient patient;
+	
+	@Type(type="encryptedString")
 	private String consentType;
+	
 	private Integer recordType;
 	
 	@OneToOne

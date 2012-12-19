@@ -5,15 +5,26 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Type;
+
 @Entity
 public class MedicalRecord extends MappedModel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@OneToOne
 	private Patient patient;
 	@OneToOne
 	private Doctor doctor;
 	private Date date;
+	
+	@Type(type="encryptedString")
 	private String description;
+	
+	@Type(type="encryptedString")
 	private String prescription;
+	
 	private Integer recordType; // brain, accident, mental
 		
 	public Patient getPatient() {

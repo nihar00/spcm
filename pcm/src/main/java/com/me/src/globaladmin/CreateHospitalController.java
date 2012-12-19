@@ -63,8 +63,7 @@ public class CreateHospitalController {
 		//nihar 5 changes
 		
 		userAccountDao.saveOrUpdate(hospitalEnterprise.getUserAccount());
-		
-		
+
 		return "global-admin/home";
 	}
 }

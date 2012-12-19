@@ -5,6 +5,10 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Doctor extends MappedModel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@OneToOne
 	private Person person;
 

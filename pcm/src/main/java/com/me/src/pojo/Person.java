@@ -8,17 +8,35 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Type;
 
 @Entity
 public class Person extends MappedModel {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Type(type="encryptedString")
 	private String firstName;
+	
+	@Type(type="encryptedString")
 	private String lastName;
+	
 	private boolean gender;
 	private Date dob;
+	
+	@Type(type="encryptedString")
 	private String address;
+	
+	@Type(type="encryptedString")
 	private String phone;
+	
+	@Type(type="encryptedString")
 	private String ssn;
+	
+	@Type(type="encryptedString")
 	private String emailId;	
 	
 	@OneToOne(fetch = FetchType.EAGER)

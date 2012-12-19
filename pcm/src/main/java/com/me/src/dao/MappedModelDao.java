@@ -10,12 +10,27 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.me.src.pojo.MappedModel;
+import com.me.src.security.PcmCipher;
 
 @Repository
 @Transactional
 public abstract class MappedModelDao<T extends MappedModel> {
 	@Autowired
 	protected SessionFactory sessionFactory;
+	protected PcmCipher pcmCipher;
+
+	public MappedModelDao(String pass,String keyName) {
+		try {
+			pcmCipher = new PcmCipher(pass, keyName);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public MappedModelDao() {
+		super();
+	}
 
 	public abstract Class<T> getActualClass();
 
@@ -42,4 +57,5 @@ public abstract class MappedModelDao<T extends MappedModel> {
 		Session session = sessionFactory.getCurrentSession();
 		session.delete(entity);
 	}
+	
 }

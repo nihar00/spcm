@@ -2,16 +2,16 @@
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
                                          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
- <session-factory>
- 
-  <mapping class="com.me.src.pojo.Doctor"/>
-  <mapping class="com.me.src.pojo.Patient"/>
-  <mapping class="com.me.src.pojo.Person"/>
-  <mapping class="com.me.src.pojo.Consent"/>
-  <mapping class="com.me.src.pojo.ConsentRequest"/>
-  <mapping class="com.me.src.pojo.Hospital"/>
-  <mapping class="com.me.src.pojo.UserAccount"/>
-  <mapping class="com.me.src.pojo.MedicalRecord"/>
- 
- </session-factory>
+	<session-factory>
+
+		<mapping class="com.me.src.pojo.Doctor" />
+		<mapping class="com.me.src.pojo.Patient" />
+		<mapping class="com.me.src.pojo.Person" />
+		<mapping class="com.me.src.pojo.Consent" />
+		<mapping class="com.me.src.pojo.ConsentRequest" />
+		<mapping class="com.me.src.pojo.Hospital" />
+		<mapping class="com.me.src.pojo.UserAccount" />
+		<mapping class="com.me.src.pojo.MedicalRecord" />
+		<mapping resource="jasyptHibernateTypes.hbm.xml"/>
+	</session-factory>
 </hibernate-configuration>

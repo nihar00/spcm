@@ -9,6 +9,10 @@ import org.hibernate.annotations.CascadeType;
 
 @Entity
 public class Patient extends MappedModel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//@OneToOne
 	@OneToOne(fetch = FetchType.EAGER)
     @Cascade({CascadeType.ALL})
