@@ -67,7 +67,17 @@ public class RequestRecordController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public String processSubmit(@ModelAttribute("request") RecordRequestCommand request,@ModelAttribute("patient") Patient patient, BindingResult result,  @RequestParam("hospitalId") long hospitalId,SessionStatus status,HttpSession session,Model model) {		
-	
+		
+		ConsentRequest consentRequest = new ConsentRequest();
+		consentRequest.setConsentType(request.getConsentType());
+		
+		int recordTypes = 0;
+		for(String s : request.getRecordType()) {
+			int record = Integer.parseInt(s);
+			recordTypes |= record;
+		}
+		consentRequest.setRecordType(recordTypes);
+		
 		//nihar 4 changes
 		UserAccount ua = (UserAccount)session.getAttribute("userAccount");
 		Hospital h=hospitalDao.findById(hospitalId);
@@ -76,7 +86,7 @@ public class RequestRecordController {
 		logger.info( " user: " + ua.getPerson().getFirstName());
 		logger.info("Hospital record is requested " + h.getName());
 		
-		ConsentRequest consentRequest = new ConsentRequest();
+		
 		consentRequest.setPatient(patientDao.findById( request.getPatientId()));
 		consentRequest.setRecordProvider(h);
 		consentRequest.setRecordRequester(hospitalDao.findById(ua.getPerson().getHospital().getId()));
