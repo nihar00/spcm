@@ -74,7 +74,7 @@ a:hover {
 			style="position: absolute; background-color: #F0F0F0; left: 400px; top: 372px; width: 583px; height: 523px; z-index: 8">
 
 			<form:form commandName="consent" method="post"
-				action="create-consent.htm" id="Form1">
+				action="doctor/create-consent.htm" id="Form1">
 
 				<div id="bv_Image4"
 					style="margin: 0; padding: 0; position: absolute; left: 24px; top: 30px; width: 101px; height: 101px; text-align: left; z-index: 0;">
