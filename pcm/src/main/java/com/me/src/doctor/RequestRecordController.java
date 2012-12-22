@@ -28,7 +28,7 @@ import com.me.src.pojo.UserAccount;
 import com.me.src.pojo.command.RecordRequestCommand;
 
 @Controller
-@RequestMapping("doctor/request-record.htm")
+@RequestMapping("/doctor")
 //nihar 4 changes
 @SessionAttributes("patient")
 //nihar 4 changes
@@ -47,7 +47,7 @@ public class RequestRecordController {
 	HospitalDao hospitalDao;
 	
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/request-record.htm", method = RequestMethod.GET)
 	public String initForm(ModelMap model, @RequestParam("patientId") long patientId) {
 		RecordRequestCommand request = new RecordRequestCommand();
 		//nihar 4 changes
@@ -65,7 +65,7 @@ public class RequestRecordController {
 		return "doctor/record-request";
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/request-record.htm", method = RequestMethod.POST)
 	public String processSubmit(@ModelAttribute("request") RecordRequestCommand request,@ModelAttribute("patient") Patient patient, BindingResult result,  @RequestParam("hospitalId") long hospitalId,SessionStatus status,HttpSession session,Model model) {		
 		
 		ConsentRequest consentRequest = new ConsentRequest();

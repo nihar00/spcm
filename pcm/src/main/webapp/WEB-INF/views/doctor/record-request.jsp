@@ -101,12 +101,12 @@ a:hover {
 			style="position: absolute; background-color: #F0F0F0; left: 400px; top: 372px; width: 583px; height: 523px; z-index: 8">
 
 			<form:form commandName="request" method="post"
-				action="doctor/request-record.htm" id="Form1"
+				action="${pageContext.request.contextPath}/doctor/request-record.htm" id="Form1"
 				onsubmit="return ValidateHospitalAdmin(this)">
 
 				<div id="bv_Image4"
 					style="margin: 0; padding: 0; position: absolute; left: 24px; top: 30px; width: 101px; height: 101px; text-align: left; z-index: 0;">
-					<img src="../resources/images/admin-icon-om.png" id="Image4" alt=""
+					<img src="${pageContext.request.contextPath}/resources/images/admin-icon-om.png" id="Image4" alt=""
 						align="top" border="0" style="width: 101px; height: 101px;">
 				</div>
 				<div id="bv_Text1"
@@ -205,17 +205,17 @@ a:hover {
 
 		<div id="bv_Image2"
 			style="margin: 0; padding: 0; position: absolute; left: 18px; top: 372px; width: 365px; height: 322px; text-align: left; z-index: 9;">
-			<img src="../resources/images/hospital.jpg" id="Image2" alt=""
+			<img src="${pageContext.request.contextPath}/resources/images/hospital.jpg" id="Image2" alt=""
 				align="top" border="0" style="width: 365px; height: 322px;">
 		</div>
 		<div id="bv_Image3"
 			style="margin: 0; padding: 0; position: absolute; left: 88px; top: 752px; width: 200px; height: 71px; text-align: left; z-index: 10;">
-			<img src="../resources/images/hippa.jpg" id="Image3" alt=""
+			<img src="${pageContext.request.contextPath}/resources/images/hippa.jpg" id="Image3" alt=""
 				align="top" border="0" style="width: 200px; height: 71px;">
 		</div>
 		<div id="bv_Image1"
 			style="margin: 0; padding: 0; position: absolute; left: 6px; top: 48px; width: 993px; height: 279px; text-align: left; z-index: 11;">
-			<img src="../resources/images/hospital-art-toy.jpg" id="Image1"
+			<img src="${pageContext.request.contextPath}/resources/images/hospital-art-toy.jpg" id="Image1"
 				alt="" align="top" border="0" style="width: 993px; height: 279px;">
 		</div>
 	</div>
