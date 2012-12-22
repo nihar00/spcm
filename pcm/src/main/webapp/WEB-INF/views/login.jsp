@@ -61,7 +61,7 @@ a:hover {
 		</div>
 		<div id="bv_Image1"
 			style="margin: 0; padding: 0; position: absolute; left: 96px; top: 59px; width: 549px; height: 193px; text-align: left; z-index: 1;">
-			<img src="resources/images/home_old.png" id="Image1" alt=""
+			<img src="${pageContext.request.contextPath}/resources/images/home_old.png" id="Image1" alt=""
 				align="top" border="0" style="width: 749px; height: 193px;">
 		</div>
 		<div id="bv_Login1"
@@ -110,7 +110,7 @@ a:hover {
 		</div>
 		<div id="bv_Image2"
 			style="margin: 0; padding: 0; position: absolute; left: 119px; top: 261px; width: 425px; height: 296px; text-align: left; z-index: 3;">
-			<img src="resources/images/login.jpg" id="Image2" alt="" align="top"
+			<img src="${pageContext.request.contextPath}/resources/images/login.jpg" id="Image2" alt="" align="top"
 				border="0" style="width: 425px; height: 296px;">
 		</div>
 		<div id="bv_Image3"

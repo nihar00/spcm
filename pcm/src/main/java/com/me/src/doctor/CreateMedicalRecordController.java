@@ -26,8 +26,7 @@ import com.me.src.pojo.Patient;
 import com.me.src.pojo.UserAccount;
 
 @Controller
-@RequestMapping("doctor/create-medical-record.htm")
-
+@RequestMapping("/doctor")
 //nihar 4 changes
 @SessionAttributes("patient")
 //nihar 4 changes
@@ -41,7 +40,7 @@ public class CreateMedicalRecordController {
 	@Autowired
 	MedicalRecordDao medicalRecordDao;
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/create-medical-record.htm", method = RequestMethod.GET)
 	public String initForm(ModelMap model, @RequestParam("patientId") long patientId) {
 		
 		
@@ -55,7 +54,7 @@ public class CreateMedicalRecordController {
 		return "doctor/create-medical-record";
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/create-medical-record.htm", method = RequestMethod.POST)
 	public String processSubmit(@ModelAttribute("record") MedicalRecord record,@ModelAttribute("patient") Patient patient, BindingResult result, HttpSession session,Model model) {		
 		
 		UserAccount ua = (UserAccount)session.getAttribute("userAccount");

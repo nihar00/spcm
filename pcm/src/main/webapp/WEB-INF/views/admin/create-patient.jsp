@@ -189,7 +189,7 @@ a:hover {
 		<div id="bv_Form1"
 			style="position: absolute; background-color: #F0F0F0; left: 400px; top: 372px; width: 583px; height: 523px; z-index: 26">
 			<form:form commandName="createPatient" method="post"
-				action="admin/create-patient.htm" id="Form1"
+				action="${pageContext.request.contextPath}/admin/create-patient.htm" id="Form1"
 				onsubmit="return ValidateHospitalAdmin(this)">
 				<form:input path="patient.person.firstName" type="text"
 					id="Editbox4"
@@ -289,7 +289,7 @@ a:hover {
 				
 				<div id="bv_Image4"
 					style="margin: 0; padding: 0; position: absolute; left: 69px; top: 72px; width: 101px; height: 101px; text-align: left; z-index: 21;">
-					<img src="../resources/images/admin-icon-om.png" id="Image4" alt=""
+					<img src="${pageContext.request.contextPath}/resources/images/admin-icon-om.png" id="Image4" alt=""
 						align="top" border="0" style="width: 101px; height: 101px;">
 				</div>
 				<input type="file" id="FileUpload1"
@@ -309,17 +309,17 @@ a:hover {
 		</div>
 		<div id="bv_Image2"
 			style="margin: 0; padding: 0; position: absolute; left: 18px; top: 372px; width: 365px; height: 322px; text-align: left; z-index: 27;">
-			<img src="../resources/images/hospital.jpg" id="Image2" alt=""
+			<img src="${pageContext.request.contextPath}/resources/images/hospital.jpg" id="Image2" alt=""
 				align="top" border="0" style="width: 365px; height: 322px;">
 		</div>
 		<div id="bv_Image1"
 			style="margin: 0; padding: 0; position: absolute; left: 17px; top: 53px; width: 968px; height: 310px; text-align: left; z-index: 28;">
-			<img src="../resources/images/hospital-art-toy.jpg" id="Image1" alt=""
+			<img src="${pageContext.request.contextPath}/resources/images/hospital-art-toy.jpg" id="Image1" alt=""
 				align="top" border="0" style="width: 968px; height: 310px;">
 		</div>
 		<div id="bv_Image3"
 			style="margin: 0; padding: 0; position: absolute; left: 88px; top: 752px; width: 200px; height: 71px; text-align: left; z-index: 29;">
-			<img src="../resources/images/hippa.jpg" id="Image3" alt="" align="top"
+			<img src="${pageContext.request.contextPath}/resources/images/hippa.jpg" id="Image3" alt="" align="top"
 				border="0" style="width: 200px; height: 71px;">
 		</div>
 	</div>

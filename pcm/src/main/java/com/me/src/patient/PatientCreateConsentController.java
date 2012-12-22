@@ -24,7 +24,7 @@ import com.me.src.pojo.UserAccount;
 import com.me.src.pojo.command.ConsentCommand;
 
 @Controller
-@RequestMapping("patient/create-consent.htm")
+@RequestMapping("/patient")
 public class PatientCreateConsentController {
 	private static final Logger logger = LoggerFactory.getLogger(PatientCreateConsentController.class);
 		
@@ -37,14 +37,14 @@ public class PatientCreateConsentController {
 	@Autowired
 	HospitalDao hospitalDao;
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/create-consent.htm", method = RequestMethod.GET)
 	public String initForm(ModelMap model) {
 		ConsentCommand consentCommand = new ConsentCommand();
 		model.addAttribute("consent", consentCommand);
 		return "patient/create-consent";
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/create-consent.htm", method = RequestMethod.POST)
 	public String processSubmit(@ModelAttribute("consent") ConsentCommand consentCommand, BindingResult result, SessionStatus status,HttpSession session) {		
 			
 		Consent consent = new Consent();

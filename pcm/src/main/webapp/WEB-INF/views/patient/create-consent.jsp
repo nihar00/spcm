@@ -72,7 +72,7 @@ a:hover {
 		<div id="bv_Form1"
 			style="position: absolute; background-color: #F0F0F0; left: 400px; top: 372px; width: 583px; height: 523px; z-index: 8">
 			<form:form commandName="consent" method="post"
-				action="patient/create-consent.htm" id="Form1">
+				action="${pageContext.request.contextPath}/patient/create-consent.htm" id="Form1">
 
 				<div id="bv_Image4"
 					style="margin: 0; padding: 0; position: absolute; left: 24px; top: 30px; width: 101px; height: 101px; text-align: left; z-index: 0;">
@@ -123,8 +123,8 @@ a:hover {
 				<div style="position: absolute; left: 315px; top: 400px; width: 148px; height: 18px; border: 1px #C0C0C0 solid; z-index: 6">
 
 					<form:select path="consentType" name="consentType" size="1" id="Combobox2" style="border-width:0px;font-family:'Courier New';font-size:16px;">
-						<option value="research">research</option>
-						<option value="shareinformation">shareinformation</option>
+						<option value="Research">Research</option>
+						<option value="Share Information">Share Information</option>
 					</form:select>
 
 				</div>
@@ -134,17 +134,17 @@ a:hover {
 		</div>
 		<div id="bv_Image2"
 			style="margin: 0; padding: 0; position: absolute; left: 18px; top: 372px; width: 365px; height: 322px; text-align: left; z-index: 9;">
-			<img src="../resources/images/hospital.jpg" id="Image2" alt=""
+			<img src="${pageContext.request.contextPath}/resources/images/hospital.jpg" id="Image2" alt=""
 				align="top" border="0" style="width: 365px; height: 322px;">
 		</div>
 		<div id="bv_Image3"
 			style="margin: 0; padding: 0; position: absolute; left: 88px; top: 752px; width: 200px; height: 71px; text-align: left; z-index: 10;">
-			<img src="../resources/images/hippa.jpg" id="Image3" alt="" align="top"
+			<img src="${pageContext.request.contextPath}/resources/images/hippa.jpg" id="Image3" alt="" align="top"
 				border="0" style="width: 200px; height: 71px;">
 		</div>
 		<div id="bv_Image1"
 			style="margin: 0; padding: 0; position: absolute; left: 6px; top: 48px; width: 993px; height: 279px; text-align: left; z-index: 11;">
-			<img src="../resources/images/hospital-art-toy.jpg" id="Image1" alt=""
+			<img src="${pageContext.request.contextPath}/resources/images/hospital-art-toy.jpg" id="Image1" alt=""
 				align="top" border="0" style="width: 993px; height: 279px;">
 		</div>
 	</div>

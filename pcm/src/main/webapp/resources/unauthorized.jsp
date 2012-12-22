@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Error</title>
+<title>Unauthorized Access</title>
 <meta name="GENERATOR" content="Created by BlueVoda Website builder http://www.bluevoda.com">
 <meta name="HOSTING" content="Hosting Provided By VodaHost http://www.vodahost.com">
 <style type="text/css">
@@ -72,7 +72,7 @@ a:hover
 <div id="bv_Image4" style="margin:0;padding:0;position:absolute;left:45px;top:53px;width:105px;height:93px;text-align:left;z-index:0;">
 <img src="resources/images/admin-icon-om.png" id="Image4" alt="" align="top" border="0" style="width:105px;height:93px;"></div>
 <div id="bv_Text1" style="margin:0;padding:0;position:absolute;left:146px;top:79px;width:325px;height:22px;text-align:left;z-index:1;">
-<h5>Kindly contact System Administrator</h5></div>
+<h5>Unauthorized to access this resource, Kindly contact System Administrator</h5></div>
 <div id="bv_Image5" style="margin:0;padding:0;position:absolute;left:176px;top:140px;width:256px;height:256px;text-align:left;z-index:2;">
 <img src="resources/images/error.png" id="Image5" alt="" align="top" border="0" style="width:256px;height:256px;"></div>
 </form>

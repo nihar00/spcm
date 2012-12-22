@@ -80,16 +80,16 @@ a:hover {
 
 				<div id="bv_Image4"
 					style="margin: 0; padding: 0; position: absolute; left: 125px; top: 100px; width: 101px; height: 101px; text-align: left; z-index: 0;">
-					<img src="resources/images/admin-icon-om.png" id="Image4" alt=""
+					<img src="${pageContext.request.contextPath}/resources/images/admin-icon-om.png" id="Image4" alt=""
 						align="top" border="0" style="width: 101px; height: 101px;">
 				</div>
 				<div id="bv_TextMenu1"
 					style="margin: 0; padding: 0; position: absolute; left: 236px; top: 197px; width: 150px; height: 66px; text-align: center; z-index: 1;">
 					<font style="font-size: 13px;" color="#000000" face="Arial">
 
-						<input type="submit" value="Treat Patient" formaction="doctor/create-medical-record.htm"/>
-						<input type="submit" value="Create Consent" formaction="doctor/create-consent.htm"/>
-						<input type="submit" value="Record Request" formaction="doctor/request-record.htm"/>
+						<input type="submit" value="Treat Patient" formaction="${pageContext.request.contextPath}/doctor/create-medical-record.htm"/>
+						<input type="submit" value="Create Consent" formaction="${pageContext.request.contextPath}/doctor/create-consent.htm"/>
+						<input type="submit" value="Record Request" formaction="${pageContext.request.contextPath}/doctor/request-record.htm"/>
 					</font>
 				</div>
 
@@ -115,17 +115,17 @@ a:hover {
 		</div>
 		<div id="bv_Image2"
 			style="margin: 0; padding: 0; position: absolute; left: 18px; top: 372px; width: 365px; height: 322px; text-align: left; z-index: 6;">
-			<img src="resources/images/hospital.jpg" id="Image2" alt=""
+			<img src="${pageContext.request.contextPath}/resources/images/hospital.jpg" id="Image2" alt=""
 				align="top" border="0" style="width: 365px; height: 322px;">
 		</div>
 		<div id="bv_Image3"
 			style="margin: 0; padding: 0; position: absolute; left: 88px; top: 752px; width: 200px; height: 71px; text-align: left; z-index: 7;">
-			<img src="resources/images/hippa.jpg" id="Image3" alt="" align="top"
+			<img src="${pageContext.request.contextPath}/resources/images/hippa.jpg" id="Image3" alt="" align="top"
 				border="0" style="width: 200px; height: 71px;">
 		</div>
 		<div id="bv_Image1"
 			style="margin: 0; padding: 0; position: absolute; left: 6px; top: 48px; width: 993px; height: 279px; text-align: left; z-index: 8;">
-			<img src="resources/images/hospital-art-toy.jpg" id="Image1" alt=""
+			<img src="${pageContext.request.contextPath}/resources/images/hospital-art-toy.jpg" id="Image1" alt=""
 				align="top" border="0" style="width: 993px; height: 279px;">
 		</div>
 	</div>

@@ -19,7 +19,7 @@ import com.me.src.pojo.command.HospitalEnterprise;
 import com.me.src.security.HashGenerator;
 
 @Controller
-@RequestMapping("global-admin/create-hospital.htm")
+@RequestMapping("/global-admin")
 public class CreateHospitalController {
 	
 	@Autowired
@@ -32,14 +32,14 @@ public class CreateHospitalController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(CreateHospitalController.class);
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/create-hospital.htm", method = RequestMethod.GET)
 	public String initForm(ModelMap model) {
 		HospitalEnterprise hospitalEnterprise = new HospitalEnterprise();
 		model.addAttribute("hospitalEnterprise", hospitalEnterprise);
 		return "global-admin/create-hospital";
 	}
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/create-hospital.htm", method = RequestMethod.POST)
 	public String processSubmit(@ModelAttribute("hospitalEnterprise") HospitalEnterprise hospitalEnterprise, BindingResult result, SessionStatus status) {		
 	
 		logger.info("Hospital Name" + hospitalEnterprise.getHospital().getName());

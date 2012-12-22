@@ -100,6 +100,7 @@ public class LoginController {
 				//model.addAttribute("patientlist",patientDao.findAll());
 				model.addAttribute("patientlist", patientDao.listPatient(ua.getPerson().getHospital().getId()));
 				return "doctor/home";
+				//return "forward:doctor";
 			}
 			else if(ua.getRole().equals(Role.Patient.toString())) {
 				return "patient/home";

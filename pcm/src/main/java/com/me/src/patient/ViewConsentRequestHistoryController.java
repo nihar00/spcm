@@ -16,7 +16,7 @@ import com.me.src.pojo.Patient;
 import com.me.src.pojo.UserAccount;
 
 @Controller
-@RequestMapping("patient/view-consent-history.htm")
+@RequestMapping("/patient")
 public class ViewConsentRequestHistoryController {
 	private static final Logger logger = LoggerFactory.getLogger(ViewConsentRequestHistoryController.class);
 		
@@ -34,7 +34,7 @@ public class ViewConsentRequestHistoryController {
 	
 	//nihar changes added model attribute in function parameter
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/view-consent-history.htm", method = RequestMethod.GET)
 	public String viewHistory(Model model,HttpSession session) {
 
 		UserAccount ua = (UserAccount)session.getAttribute("userAccount");
