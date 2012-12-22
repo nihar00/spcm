@@ -122,29 +122,82 @@ a:hover {
 							style="position:absolute;left:0px;top:0px;width:100%;height:100%;border-width:0px;font-family:'Courier New';font-size:16px;">
 							<c:forEach items="${hospitalList}" var="pl">
 								<option value="${pl.id}">${pl.name}</option>
-							</c:forEach>	
+							</c:forEach>
 						</form:select>
 					</c:if>
 					<!-- nihar 4 changes -->
 
 				</div>
 
+				<div id="bv_Text2"
+					style="margin: 0; padding: 0; position: absolute; left: 133px; top: 200px; width: 150px; height: 16px; text-align: left; z-index: 4;">
+					<font style="font-size: 13px" color="#000000" face="Arial">Record
+						Type</font>
+				</div>
+
+				<div
+					style="position: absolute; left: 313px; top: 200px; width: 148px; height: 18px; z-index: 2">
+
+					<form:checkbox path="recordType" name="recordType" value="1" />
+					General<br />
+					<form:checkbox path="recordType" name="recordType" value="2" />
+					Respiratory<br />
+					<form:checkbox path="recordType" name="recordType" value="4" />
+					Oral<br />
+					<form:checkbox path="recordType" name="recordType" value="8" />
+					Gastritis<br />
+					<form:checkbox path="recordType" name="recordType" value="16" />
+					Skin<br />
+					<form:checkbox path="recordType" name="recordType" value="32" />
+					Orthopedic<br />
+					<form:checkbox path="recordType" name="recordType" value="64" />
+					Cognitive<br />
+					<form:checkbox path="recordType" name="recordType" value="128" />
+					Neurological<br />
+					<form:checkbox path="recordType" name="recordType" value="256" />
+					Eye Nose Ear<br />
+					<form:checkbox path="recordType" name="recordType" value="512" />
+					Immunization<br />
+					<form:checkbox path="recordType" name="recordType" value="1024" />
+					Allergy<br />
+
+				</div>
+				
+				<div id="bv_Text3"
+					style="margin: 0; padding: 0; position: absolute; left: 132px; top: 430px; width: 150px; height: 16px; text-align: left; z-index: 5;">
+					<font style="font-size: 13px" color="#000000" face="Arial">Consent
+						Type</font>
+				</div>
+
+				<div
+					style="position: absolute; left: 315px; top: 430px; width: 148px; height: 18px; border: 1px #C0C0C0 solid; z-index: 6">
+
+					<form:select path="consentType" name="consentType" size="1"
+						id="Combobox2"
+						style="position:absolute;left:0px;top:0px;width:100%;height:100%;border-width:0px;font-family:'Courier New';font-size:16px;">
+						<option value="Research">Research</option>
+						<option value="Share Information">Share Information</option>
+					</form:select>
+
+				</div>
+
+
 				<input type="submit" id="Button1" name="Request Record"
 					value="Request Record"
-					style="position: absolute; left: 211px; top: 259px; width: 136px; height: 24px; font-family: Arial; font-size: 13px; z-index: 3">
+					style="position: absolute; left: 211px; top: 470px; width: 136px; height: 24px; font-family: Arial; font-size: 13px; z-index: 3">
 				<div id="bv_Text2"
 					style="margin: 0; padding: 0; position: absolute; left: 131px; top: 137px; width: 150px; height: 16px; text-align: left; z-index: 4;">
 					<font style="font-size: 13px" color="#000000" face="Arial">Select
 						Hospital</font>
 				</div>
 				<div id="bv_Text3"
-					style="margin: 0; padding: 0; position: absolute; left: 132px; top: 223px; width: 150px; height: 16px; text-align: left; z-index: 5;">
+					style="margin: 0; padding: 0; position: absolute; left: 132px; top: 170px; width: 150px; height: 16px; text-align: left; z-index: 5;">
 					<font style="font-size: 13px" color="#000000" face="Arial">Enter
 						Patient ID</font>
 				</div>
 
 				<form:input path="patientId" type="password" id="Editbox1"
-					style="position:absolute;left:312px;top:216px;width:148px;height:20px;border:1px #C0C0C0 solid;font-family:'Courier New';font-size:16px;z-index:6"
+					style="position:absolute;left:312px;top:170px;width:148px;height:20px;border:1px #C0C0C0 solid;font-family:'Courier New';font-size:16px;z-index:6"
 					name="patientId" value="" />
 
 			</form:form>
@@ -157,13 +210,13 @@ a:hover {
 		</div>
 		<div id="bv_Image3"
 			style="margin: 0; padding: 0; position: absolute; left: 88px; top: 752px; width: 200px; height: 71px; text-align: left; z-index: 10;">
-			<img src="../resources/images/hippa.jpg" id="Image3" alt="" align="top"
-				border="0" style="width: 200px; height: 71px;">
+			<img src="../resources/images/hippa.jpg" id="Image3" alt=""
+				align="top" border="0" style="width: 200px; height: 71px;">
 		</div>
 		<div id="bv_Image1"
 			style="margin: 0; padding: 0; position: absolute; left: 6px; top: 48px; width: 993px; height: 279px; text-align: left; z-index: 11;">
-			<img src="../resources/images/hospital-art-toy.jpg" id="Image1" alt=""
-				align="top" border="0" style="width: 993px; height: 279px;">
+			<img src="../resources/images/hospital-art-toy.jpg" id="Image1"
+				alt="" align="top" border="0" style="width: 993px; height: 279px;">
 		</div>
 	</div>
 </body>
