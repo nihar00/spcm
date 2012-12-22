@@ -17,7 +17,7 @@ public class FrontControllerInterceptor extends HandlerInterceptorAdapter {
 			HttpServletResponse response, Object handler) throws Exception {
 		// TODO Auto-generated method stub
 		logger.info("preHandle()");		
-							
+						
 		 //business.getSessionManagementServer().validateSession(request);
 		return super.preHandle(request, response, handler);
 	}
