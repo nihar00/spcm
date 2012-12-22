@@ -132,7 +132,7 @@ public class LoginController {
 		
 		UserAccount ua = new UserAccount();
 		ua.setUsername("admin");
-		ua.setPassword("admin");
+		ua.setPassword(HashGenerator.getHashValue("admin"));
 		ua.setRole(Role.GlobalAdmin.toString());
 		ua.setPerson(person);
 				

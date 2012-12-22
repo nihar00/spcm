@@ -25,6 +25,7 @@ import com.me.src.dao.UserAccountDao;
 import com.me.src.pojo.Consent;
 import com.me.src.pojo.Patient;
 import com.me.src.pojo.UserAccount;
+import com.me.src.pojo.command.ConsentCommand;
 
 @Controller
 @RequestMapping("/create-consent.htm")
@@ -45,12 +46,12 @@ public class DoctorCreateConsentController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String initForm(ModelMap model,  @RequestParam("patientId") long patientId) {
-		Consent consent = new Consent();
+		ConsentCommand consentCommand = new ConsentCommand();
 		//nihar 4 changes
 		Patient patient = patientDao.findById(patientId);
 		//nihar 4 changes
 
-		model.addAttribute("consent", consent);
+		model.addAttribute("consent", consentCommand);
 
 		//nihar 4 changes
 		model.addAttribute("patient", patient);
@@ -61,16 +62,27 @@ public class DoctorCreateConsentController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String processSubmit(@ModelAttribute("consent") Consent consent,@ModelAttribute("patient") Patient patient, BindingResult result, SessionStatus status,HttpSession session,Model model) {		
+	public String processSubmit(@ModelAttribute("consent") ConsentCommand consentCommand,@ModelAttribute("patient") Patient patient, BindingResult result, SessionStatus status,HttpSession session,Model model) {		
+
+		Consent consent = new Consent();
+		consent.setConsentType(consentCommand.getConsentType());
+		
+		long recordTypes = 0;
+		for(String s : consentCommand.getRecordType()) {
+			long record = Long.parseLong(s);
+			recordTypes |= record;
+		}
+		
+		consent.setRecordType(Long.toString(recordTypes));
+		logger.info("consent Type: " + consent.getConsentType() + " recordType: " + consent.getRecordType());
 
 		//nihar 4 changes
-		UserAccount ua = (UserAccount)session.getAttribute("userAccount");
-		logger.info("Consent: " + consent.getConsentType());
+		UserAccount ua = (UserAccount)session.getAttribute("userAccount");		
 		logger.info("PatientId in consent creation by doctor: " + patient.getId());
 		logger.info( " user: " + ua.getPerson().getFirstName());
-
+		
 		consent.setDate(new Date());
-		consent.setConsentCreatedBy(userAccountDao.findById( ua.getPerson().getId()));
+		consent.setConsentCreatedBy(userAccountDao.findById(ua.getPerson().getId()));
 		consent.setPatient(patientDao.findById(patient.getId()));
 		consent.setHospital(hospitalDao.findById(ua.getPerson().getHospital().getId()));
 		//nihar 4 changes

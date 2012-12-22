@@ -88,21 +88,28 @@ a:hover {
 				<div
 					style="position: absolute; left: 313px; top: 134px; width: 148px; height: 18px; border: 1px #C0C0C0 solid; z-index: 2">
 
-					<form:select path="recordType" name="recordType" size="1"
-						id="Combobox1"
-						style="position:absolute;left:0px;top:0px;width:100%;height:100%;border-width:0px;font-family:'Courier New';font-size:16px;">
-						<option value="1">General</option>
-						<option value="2">Respiratory</option>
-						<option value="4">Oral</option>
-						<option value="8">Gastritis</option>
-						<option value="16">Skin</option>
-						<option value="32">Orthopedic</option>
-						<option value="64">Cognitive</option>
-						<option value="128">Neurological</option>
-						<option value="256">Eye Nose Ear</option>
-						<option value="512">Immunization</option>
-						<option value="1024">Allergy</option>
-					</form:select>
+					<form:checkbox path="recordType" name="recordType" value="1" />
+					General<br />
+					<form:checkbox path="recordType" name="recordType" value="2" />
+					Respiratory<br />
+					<form:checkbox path="recordType" name="recordType" value="4" />
+					Oral<br />
+					<form:checkbox path="recordType" name="recordType" value="8" />
+					Gastritis<br />
+					<form:checkbox path="recordType" name="recordType" value="16" />
+					Skin<br />
+					<form:checkbox path="recordType" name="recordType" value="32" />
+					Orthopedic<br />
+					<form:checkbox path="recordType" name="recordType" value="64" />
+					Cognitive<br />
+					<form:checkbox path="recordType" name="recordType" value="128" />
+					Neurological<br />
+					<form:checkbox path="recordType" name="recordType" value="256" />
+					Eye Nose Ear<br />
+					<form:checkbox path="recordType" name="recordType" value="512" />
+					Immunization<br />
+					<form:checkbox path="recordType" name="recordType" value="1024" />
+					Allergy<br />
 				</div>
 
 				<input type="submit" id="Button1" name="create consent"

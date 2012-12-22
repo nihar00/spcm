@@ -21,6 +21,7 @@ import com.me.src.dao.PatientDao;
 import com.me.src.dao.UserAccountDao;
 import com.me.src.pojo.Consent;
 import com.me.src.pojo.UserAccount;
+import com.me.src.pojo.command.ConsentCommand;
 
 @Controller
 @RequestMapping("/patient-create-consent.htm")
@@ -38,16 +39,26 @@ public class PatientCreateConsentController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String initForm(ModelMap model) {
-		Consent consent = new Consent();
-		model.addAttribute("consent", consent);
+		ConsentCommand consentCommand = new ConsentCommand();
+		model.addAttribute("consent", consentCommand);
 		return "patient/create-consent";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String processSubmit(@ModelAttribute("consent") Consent consent, BindingResult result, SessionStatus status,HttpSession session) {		
-	
+	public String processSubmit(@ModelAttribute("consent") ConsentCommand consentCommand, BindingResult result, SessionStatus status,HttpSession session) {		
+			
+		Consent consent = new Consent();
+		consent.setConsentType(consentCommand.getConsentType());
+		long recordTypes = 0;
+		for(String s : consentCommand.getRecordType()) {
+			long record = Long.parseLong(s);
+			recordTypes |= record;
+		}
+		
+		consent.setRecordType(Long.toString(recordTypes));
+		logger.info("Consent: " + consent.getConsentType() + " recordType: " + consent.getRecordType());
+		
 		UserAccount ua = (UserAccount)session.getAttribute("userAccount");
-		logger.info("Consent: " + consent.getConsentType());
 		consent.setDate(new Date());
 		consent.setConsentCreatedBy(ua);
 		consent.setPatient(patientDao.getPatientFromPersonId(ua.getPerson().getId()));
