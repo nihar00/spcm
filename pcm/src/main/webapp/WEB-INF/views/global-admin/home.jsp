@@ -73,7 +73,7 @@ a:hover {
 				<div id="bv_TextMenu1"
 					style="margin: 0; padding: 0; position: absolute; left: 173px; top: 177px; width: 150px; height: 18px; text-align: center; z-index: 2;">
 					<font style="font-size: 13px;" color="#000000" face="Arial">
-						<a href="create-hospital.htm">Create Hospital</a>
+						<a href="global-admin/create-hospital.htm">Create Hospital</a>
 					</font>
 				</div>
 			</form>

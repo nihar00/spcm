@@ -26,7 +26,7 @@ import com.me.src.pojo.Patient;
 import com.me.src.pojo.UserAccount;
 
 @Controller
-@RequestMapping("/create-medical-record.htm")
+@RequestMapping("doctor/create-medical-record.htm")
 
 //nihar 4 changes
 @SessionAttributes("patient")

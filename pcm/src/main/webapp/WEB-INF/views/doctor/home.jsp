@@ -87,9 +87,9 @@ a:hover {
 					style="margin: 0; padding: 0; position: absolute; left: 236px; top: 197px; width: 150px; height: 66px; text-align: center; z-index: 1;">
 					<font style="font-size: 13px;" color="#000000" face="Arial">
 
-						<input type="submit" value="Treat Patient" formaction="create-medical-record.htm"/>
-						<input type="submit" value="Create Consent" formaction="create-consent.htm"/>
-						<input type="submit" value="Record Request" formaction="request-record.htm"/>
+						<input type="submit" value="Treat Patient" formaction="doctor/create-medical-record.htm"/>
+						<input type="submit" value="Create Consent" formaction="doctor/create-consent.htm"/>
+						<input type="submit" value="Record Request" formaction="doctor/request-record.htm"/>
 					</font>
 				</div>
 

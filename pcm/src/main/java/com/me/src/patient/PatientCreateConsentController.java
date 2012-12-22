@@ -24,7 +24,7 @@ import com.me.src.pojo.UserAccount;
 import com.me.src.pojo.command.ConsentCommand;
 
 @Controller
-@RequestMapping("/patient-create-consent.htm")
+@RequestMapping("patient/create-consent.htm")
 public class PatientCreateConsentController {
 	private static final Logger logger = LoggerFactory.getLogger(PatientCreateConsentController.class);
 		

@@ -28,7 +28,7 @@ import com.me.src.pojo.UserAccount;
 import com.me.src.pojo.command.ConsentCommand;
 
 @Controller
-@RequestMapping("/create-consent.htm")
+@RequestMapping("doctor/create-consent.htm")
 //nihar 4 changes
 @SessionAttributes("patient")
 //nihar 4 changes

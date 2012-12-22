@@ -111,7 +111,7 @@ a:hover {
 		</div>
 		<div id="bv_Form1"
 			style="position: absolute; background-color: #F0F0F0; left: 400px; top: 372px; width: 583px; height: 523px; z-index: 10">
-			<form:form commandName="record" method="post" action="create-medical-record.htm"
+			<form:form commandName="record" method="post" action="doctor/create-medical-record.htm"
 				id="Form1"
 				onsubmit="return ValidateHospitalAdmin(this)">
 

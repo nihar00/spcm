@@ -2,9 +2,6 @@ package com.me.src.pojo.command;
 
 import java.util.ArrayList;
 
-import javax.persistence.Entity;
-
-@Entity
 public class ConsentCommand {
 	
 	private String consentType;	

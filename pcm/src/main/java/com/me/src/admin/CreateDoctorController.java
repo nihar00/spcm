@@ -21,17 +21,9 @@ import com.me.src.pojo.UserAccount;
 import com.me.src.pojo.command.CreateDoctor;
 import com.me.src.security.HashGenerator;
 @Controller
-@RequestMapping("/create-doctor.htm")
-
+@RequestMapping("admin/create-doctor.htm")
 public class CreateDoctorController {
 	private static final Logger logger = LoggerFactory.getLogger(CreateDoctorController.class);
-
-	@RequestMapping(method = RequestMethod.GET)
-	public String initForm(ModelMap model) {
-		CreateDoctor createDoctor = new CreateDoctor();
-		model.addAttribute("createDoctor", createDoctor);
-		return "admin/create-doctor";
-	}
 
 	//nihar changes
 	@Autowired
@@ -41,6 +33,13 @@ public class CreateDoctorController {
 	@Autowired
 	UserAccountDao userAccountDao;
 	//nihar changes
+
+	@RequestMapping(method = RequestMethod.GET)
+	public String initForm(ModelMap model) {
+		CreateDoctor createDoctor = new CreateDoctor();
+		model.addAttribute("createDoctor", createDoctor);
+		return "admin/create-doctor";
+	}
 
 	@RequestMapping(method = RequestMethod.POST)	
 	public String processSubmit(@ModelAttribute("createDoctor") CreateDoctor createDoctor, BindingResult result, SessionStatus status, HttpSession session) {		

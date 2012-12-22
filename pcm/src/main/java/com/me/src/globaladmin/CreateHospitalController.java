@@ -19,7 +19,7 @@ import com.me.src.pojo.command.HospitalEnterprise;
 import com.me.src.security.HashGenerator;
 
 @Controller
-@RequestMapping("/create-hospital.htm")
+@RequestMapping("global-admin/create-hospital.htm")
 public class CreateHospitalController {
 	
 	@Autowired

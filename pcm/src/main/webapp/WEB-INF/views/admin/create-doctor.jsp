@@ -190,7 +190,7 @@ a:hover {
 		<div id="bv_Form1"
 			style="position: absolute; background-color: #F0F0F0; left: 400px; top: 372px; width: 583px; height: 523px; z-index: 24">
 			<form:form commandName="createDoctor" method="post"
-				action="create-doctor.htm" id="Form1"
+				action="admin/create-doctor.htm" id="Form1"
 				onsubmit="return ValidateHospitalAdmin(this)">
 				<form:input path="doctor.person.firstName" type="text" id="Editbox4"
 					style="position:absolute;left:394px;top:167px;width:148px;height:20px;border:1px #C0C0C0 solid;font-family:'Courier New';font-size:16px;z-index:0"

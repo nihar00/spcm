@@ -16,7 +16,7 @@ import com.me.src.pojo.Patient;
 import com.me.src.pojo.UserAccount;
 
 @Controller
-@RequestMapping("/view-consent-history.htm")
+@RequestMapping("patient/view-consent-history.htm")
 public class ViewConsentRequestHistoryController {
 	private static final Logger logger = LoggerFactory.getLogger(ViewConsentRequestHistoryController.class);
 		

@@ -71,8 +71,8 @@ a:hover {
 					style="margin: 0; padding: 0; position: absolute; left: 216px; top: 119px; width: 150px; height: 50px; text-align: center; z-index: 1;">
 					<font style="font-size: 13px;" color="#000000" face="Arial">
 
-						<a href="patient-create-consent.htm" target="_self">Create Consent</a><br>						
-						<a href="view-consent-history.htm" target="_self">View Request History</a>
+						<a href="patient/create-consent.htm" target="_self">Create Consent</a><br>						
+						<a href="patient/view-consent-history.htm" target="_self">View Request History</a>
 					</font>
 				</div>
 

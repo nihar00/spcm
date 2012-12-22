@@ -22,16 +22,9 @@ import com.me.src.pojo.command.CreatePatient;
 import com.me.src.security.HashGenerator;
 
 @Controller
-@RequestMapping("/create-patient.htm")
+@RequestMapping("admin/create-patient.htm")
 public class CreatePatientController {
 	private static final Logger logger = LoggerFactory.getLogger(CreatePatientController.class);
-
-	@RequestMapping(method = RequestMethod.GET)
-	public String initForm(ModelMap model) {
-		CreatePatient createPatient = new CreatePatient();
-		model.addAttribute("createPatient", createPatient);
-		return "admin/create-patient";
-	}
 
 	@Autowired
 	PatientDao patientDao;
@@ -39,6 +32,14 @@ public class CreatePatientController {
 	PersonDao personDao;
 	@Autowired
 	UserAccountDao userAccountDao;
+
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public String initForm(ModelMap model) {
+		CreatePatient createPatient = new CreatePatient();
+		model.addAttribute("createPatient", createPatient);
+		return "admin/create-patient";
+	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String processSubmit(@ModelAttribute("createPatient") CreatePatient createPatient, BindingResult result, SessionStatus status, HttpSession session) {		
