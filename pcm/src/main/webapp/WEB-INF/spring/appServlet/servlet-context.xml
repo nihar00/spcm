@@ -23,12 +23,12 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<!-- <mvc:mapping path="/**" /> -->
-			<mvc:mapping path="global-admin/**"/>
-			<mvc:mapping path="admin/**"/>
-			<mvc:mapping path="doctor/**"/>
-			<mvc:mapping path="patient/**"/>
-			<mvc:mapping path="login.htm"/>
-			<mvc:mapping path="logout.htm"/>
+			<mvc:mapping path="/global-admin/**"/>
+			<mvc:mapping path="/admin/**"/>
+			<mvc:mapping path="/doctor/**"/>
+			<mvc:mapping path="/patient/**"/>
+			<mvc:mapping path="/login.htm"/>
+			<mvc:mapping path="/logout.htm"/>
 			<bean class="com.me.src.FrontControllerInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>

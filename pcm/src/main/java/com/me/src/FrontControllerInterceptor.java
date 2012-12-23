@@ -15,10 +15,16 @@ public class FrontControllerInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		// TODO Auto-generated method stub
-		logger.info("preHandle()");		
-						
-		 //business.getSessionManagementServer().validateSession(request);
+		logger.info("preHandle()");
+
+		 // Session management
+		
+		// Access control management
+		if(AccessControlManager.canAccessThisResource(request) == false) {			
+			response.sendRedirect(request.getContextPath() + "/resources/unauthorized.jsp");
+			return false;
+		}
+
 		return super.preHandle(request, response, handler);
 	}
 	
