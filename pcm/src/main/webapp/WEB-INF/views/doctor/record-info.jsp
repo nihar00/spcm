@@ -81,25 +81,25 @@ a:hover
 <div id="Html1" style="position:absolute;left:6px;top:46px;width:994px;height:873px;z-index:5">
 </div>
 <div id="bv_Form1" style="position:absolute;background-color:#F0F0F0;left:399px;top:372px;width:583px;height:523px;z-index:6">
-<form name="HospitalAdmin" method="post" action="" enctype="text/plain" id="Form1">
+<form name="HospitalAdmin" method="post" action=""  id="Form1">
 <div id="bv_Image4" style="margin:0;padding:0;position:absolute;left:24px;top:31px;width:101px;height:101px;text-align:left;z-index:0;">
-<img src="images/admin-icon-om.png" id="Image4" alt="" align="top" border="0" style="width:101px;height:101px;"></div>
+<img src="${pageContext.request.contextPath}/resources/images/admin-icon-om.png" id="Image4" alt="" align="top" border="0" style="width:101px;height:101px;"></div>
 <div id="bv_Text1" style="margin:0;padding:0;position:absolute;left:138px;top:18px;width:107px;height:22px;text-align:left;z-index:1;">
-<h5>Patient Info</h5></div>
+<h5>Patient Info</h5> </div>
 <div id="bv_Text4" style="margin:0;padding:0;position:absolute;left:138px;top:49px;width:94px;height:18px;text-align:left;z-index:2;">
-<h6>First Name</h6></div>
+<h6>First Name: ${patient.person.firstName}  </h6></div>
 <div id="bv_Text5" style="margin:0;padding:0;position:absolute;left:138px;top:76px;width:85px;height:18px;text-align:left;z-index:3;">
-<h6>Last Name</h6></div>
+<h6>Last Name:${patient.person.lastName} </h6></div> 
 <div id="bv_Text2" style="margin:0;padding:0;position:absolute;left:139px;top:105px;width:85px;height:18px;text-align:left;z-index:4;">
-<h6>Address</h6></div>
+<h6>Address:${patient.person.address}  </h6></div>
 </form>
 </div>
 <div id="bv_Image2" style="margin:0;padding:0;position:absolute;left:18px;top:372px;width:365px;height:322px;text-align:left;z-index:7;">
-<img src="images/hospital.jpg" id="Image2" alt="" align="top" border="0" style="width:365px;height:322px;"></div>
+<img src="${pageContext.request.contextPath}/resources/images/hospital.jpg" id="Image2" alt="" align="top" border="0" style="width:365px;height:322px;"></div>
 <div id="bv_Image3" style="margin:0;padding:0;position:absolute;left:88px;top:752px;width:200px;height:71px;text-align:left;z-index:8;">
-<img src="images/hippa.jpg" id="Image3" alt="" align="top" border="0" style="width:200px;height:71px;"></div>
+<img src="${pageContext.request.contextPath}/resources/images/hippa.jpg" id="Image3" alt="" align="top" border="0" style="width:200px;height:71px;"></div>
 <div id="bv_Image1" style="margin:0;padding:0;position:absolute;left:6px;top:48px;width:993px;height:279px;text-align:left;z-index:9;">
-<img src="images/hc.png" id="Image1" alt="" align="top" border="0" style="width:993px;height:279px;"></div>
+<img src="${pageContext.request.contextPath}/resources/images/hospital-art-toy.jpg" id="Image1" alt="" align="top" border="0" style="width:993px;height:279px;"></div>
 </div>
 </body>
 </html>

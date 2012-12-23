@@ -87,7 +87,7 @@ public class RequestRecordController {
 		logger.info("Hospital record is requested " + h.getName());
 		
 		
-		consentRequest.setPatient(patientDao.findById( request.getPatientId()));
+		consentRequest.setPatient(patientDao.findById(request.getPatientId()));
 		consentRequest.setRecordProvider(h);
 		consentRequest.setRecordRequester(hospitalDao.findById(ua.getPerson().getHospital().getId()));
 		consentRequest.setRequestByUser(ua);
@@ -96,7 +96,11 @@ public class RequestRecordController {
 		
 		consentRequestDao.saveOrUpdate(consentRequest);
 		model.addAttribute("patientlist", patientDao.listPatient(ua.getPerson().getHospital().getId()));
-		return "doctor/home";
+		
+		//code for displaying patient details
+		model.addAttribute("patient",patientDao.findById(request.getPatientId()));
+		
+		return "doctor/record-info";
 	}
 	
 }
