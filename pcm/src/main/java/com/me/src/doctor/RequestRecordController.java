@@ -19,8 +19,10 @@ import org.springframework.web.bind.support.SessionStatus;
 import com.me.src.dao.ConsentDao;
 import com.me.src.dao.ConsentRequestDao;
 import com.me.src.dao.HospitalDao;
+import com.me.src.dao.MedicalRecordDao;
 import com.me.src.dao.PatientDao;
 import com.me.src.dao.UserAccountDao;
+import com.me.src.pojo.Consent;
 import com.me.src.pojo.ConsentRequest;
 import com.me.src.pojo.Hospital;
 import com.me.src.pojo.Patient;
@@ -45,6 +47,8 @@ public class RequestRecordController {
 	ConsentDao consentDao;
 	@Autowired
 	HospitalDao hospitalDao;
+	@Autowired
+	MedicalRecordDao medicalRecordDao;
 	
 	
 	@RequestMapping(value = "/request-record.htm", method = RequestMethod.GET)
@@ -99,8 +103,24 @@ public class RequestRecordController {
 		
 		//code for displaying patient details
 		model.addAttribute("patient",patientDao.findById(request.getPatientId()));
+		Consent consent=consentDao.getConsentFromPatientId(request.getPatientId());
+		logger.info("Consent Type for the Patient is "+ consent.getConsentType());
 		
-		return "doctor/record-info";
+		if(consent.getConsentType().equalsIgnoreCase(request.getConsentType()))
+		{
+			logger.info("Consent Match");
+			/*model.addAttribute("medical",medicalRecordDao.listMedicalRecord(request.getPatientId()));*/
+			model.addAttribute("medical",medicalRecordDao.listMedicalRecord(request.getPatientId(),recordTypes));
+			return "doctor/patient-info";
+			
+		}
+		else
+		{
+			logger.info("No Permission");
+			return "doctor/home";
+		}
+		
+		
 	}
 	
 }

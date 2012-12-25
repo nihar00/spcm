@@ -78,7 +78,7 @@ a:hover {
 			style="position: absolute; background-color: #F0F0F0; left: 400px; top: 372px; width: 583px; height: 523px; z-index: 5">
 
 			<div id="bv_Image4"
-				style="margin: 0; padding: 0; position: absolute; left: 87px; top: 29px; width: 105px; height: 93px; text-align: left; z-index: 0;">
+				style="margin: 0; padding: 0; position: absolute; left: 87px; top: 69px; width: 105px; height: 93px; text-align: left; z-index: 0;">
 				<img
 					src="${pageContext.request.contextPath}/resources/images/admin-icon-om.png"
 					id="Image4" alt="" align="top" border="0"
@@ -86,31 +86,41 @@ a:hover {
 			</div>
 			<div id="bv_Text1"
 				style="margin: 0; padding: 0; position: absolute; left: 197px; top: 79px; width: 190px; height: 22px; text-align: left; z-index: 1;">
-				<h5>View Request History</h5>
+				<h5><b>Patient Info</b></h5><br>
+				<h5>${patient.person.firstName}</h5>
+				<h5>${patient.person.lastName}</h5><br>
+				<h5>${patient.person.address}</h5>
 			</div>
 
 			<div id="bv_Table1"
-				style="margin: 0; padding: 0; position: absolute; left: 57px; top: 120px; width: 491px; height: 150px; text-align: left; z-index: 3;">
+				style="margin: 0; padding: 0; position: absolute; left: 57px; top: 180px; width: 491px; height: 150px; text-align: left; z-index: 3;">
 
 				<!-- nihar changes -->
-				<c:if test="${!empty requests}">
-					<table border=1 width="100%">
+			<c:if test="${!empty medical}">
+				<table border=1 width="100%">
+					<tr>
+						<th>Record Date</th>
+						<th>Description</th>
+						<th>Prescription</th>
+						<th>Record Type</th>
+					</tr>
+					<c:forEach items="${medical}" var="pl">
+
 						<tr>
-							<th>Record Requested By Hospital</th>
-							<th>Name of the doctor</th>
+							<td>${pl.date}</td>
+
+							<td>${pl.description}</td>
+							
+							<td>${pl.prescription}</td>
+							
+							<td>${pl.recordType}</td>
 						</tr>
-						<c:forEach items="${requests}" var="pl">
 
-							<tr>
-								<td>${pl.recordRequester.name}</td>
-
-								<td>${pl.requestByUser.person.firstName}</td>
-							</tr>
-
-						</c:forEach>
-					</table>
-				</c:if>
-				<!-- nihar changes -->
+					</c:forEach>
+				</table>
+			</c:if>
+			<!-- nihar changes -->
+			
 			</div>
 
 		</div>
