@@ -1,9 +1,6 @@
 package com.me.src.pojo;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
@@ -15,6 +12,7 @@ import org.owasp.esapi.Validator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@SuppressWarnings("unused")
 @Entity
 public class Consent extends MappedModel {
 	/**
@@ -76,12 +74,12 @@ public class Consent extends MappedModel {
 		this.consentCreatedBy = consentCreatedBy;
 	}
 	// Meena's validation function
-    private static final Logger logger = LoggerFactory.getLogger(MedicalRecord.class);
+//    private static final Logger logger = LoggerFactory.getLogger(MedicalRecord.class);
 	
     public ValidationErrorList validate(){
 		
 		ValidationErrorList errorList = new ValidationErrorList();
-		Validator instance = ESAPI.validator();
+//		Validator instance = ESAPI.validator();
 		/*DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 			
 		if ( (instance.getValidDate("Dob", df.format(date), 

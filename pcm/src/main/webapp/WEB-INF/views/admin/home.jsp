@@ -70,6 +70,7 @@ a:hover {
 					<font style="font-size: 13px;" color="#000000" face="Arial">
 						<a href="${pageContext.request.contextPath}/admin/create-patient.htm">Create Patient</a><br>
 					<a href="${pageContext.request.contextPath}/admin/create-doctor.htm">Create Doctor</a>
+					<a href="${pageContext.request.contextPath}/logout.htm">Log Out</a>
 					</font>
 				</div>
 			</form>

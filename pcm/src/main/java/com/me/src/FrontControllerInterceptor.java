@@ -19,6 +19,7 @@ public class FrontControllerInterceptor extends HandlerInterceptorAdapter {
 
 		 // Session management
 		
+		
 		// Access control management
 		if(AccessControlManager.canAccessThisResource(request) == false) {			
 			response.sendRedirect(request.getContextPath() + "/resources/unauthorized.jsp");
@@ -35,6 +36,9 @@ public class FrontControllerInterceptor extends HandlerInterceptorAdapter {
 			ModelAndView modelAndView) throws Exception {
 		// TODO Auto-generated method stub
 		logger.info("postHandle()");
+		logger.info("Session Id is : " + request.getSession().getId());
+//		logger.info("Remote Address is : " + request.getRemoteAddr());
+//		HttpSession session=request.getSession();
 		
 		super.postHandle(request, response, handler, modelAndView);
 	}

@@ -76,6 +76,8 @@ a:hover {
 		</div>
 		<div id="bv_Form1"
 			style="position: absolute; background-color: #F0F0F0; left: 400px; top: 372px; width: 583px; height: 523px; z-index: 5">
+	
+			<a href="${pageContext.request.contextPath}/logout.htm">Log Out</a>
 
 			<div id="bv_Image4"
 				style="margin: 0; padding: 0; position: absolute; left: 87px; top: 29px; width: 105px; height: 93px; text-align: left; z-index: 0;">

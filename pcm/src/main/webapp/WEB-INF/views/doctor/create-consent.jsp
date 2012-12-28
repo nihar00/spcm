@@ -75,17 +75,22 @@ a:hover {
 		<div id="bv_Form1"
 			style="position: absolute; background-color: #F0F0F0; left: 400px; top: 372px; width: 583px; height: 523px; z-index: 8">
 
+			<a href="${pageContext.request.contextPath}/logout.htm">Log Out</a>
+
 			<form:form commandName="consent" method="post"
-				action="${pageContext.request.contextPath}/doctor/create-consent.htm" id="Form1">
-				<c:forEach items="${errorlist}" var="error"> 
-	        	    <div id="bv_Text2">${error}</div>
-	        	    <font color="red"></font>       
+				action="${pageContext.request.contextPath}/doctor/create-consent.htm"
+				id="Form1">
+				<c:forEach items="${errorlist}" var="error">
+					<div id="bv_Text2">${error}</div>
+					<font color="red"></font>
 				</c:forEach>
 
 				<div id="bv_Image4"
 					style="margin: 0; padding: 0; position: absolute; left: 24px; top: 30px; width: 101px; height: 101px; text-align: left; z-index: 0;">
-					<img src="${pageContext.request.contextPath}/resources/images/admin-icon-om.png" id="Image4" alt=""
-						align="top" border="0" style="width: 101px; height: 101px;">
+					<img
+						src="${pageContext.request.contextPath}/resources/images/admin-icon-om.png"
+						id="Image4" alt="" align="top" border="0"
+						style="width: 101px; height: 101px;">
 				</div>
 				<div id="bv_Text1"
 					style="margin: 0; padding: 0; position: absolute; left: 147px; top: 69px; width: 190px; height: 22px; text-align: left; z-index: 1;">
@@ -116,7 +121,7 @@ a:hover {
 					Immunization<br />
 					<form:checkbox path="recordType" name="recordType" value="1024" />
 					Allergy<br />
-					
+
 				</div>
 
 				<input type="submit" id="Button1" name="create consent"
@@ -147,18 +152,24 @@ a:hover {
 		</div>
 		<div id="bv_Image2"
 			style="margin: 0; padding: 0; position: absolute; left: 18px; top: 372px; width: 365px; height: 322px; text-align: left; z-index: 9;">
-			<img src="${pageContext.request.contextPath}/resources/images/hospital.jpg" id="Image2" alt=""
-				align="top" border="0" style="width: 365px; height: 322px;">
+			<img
+				src="${pageContext.request.contextPath}/resources/images/hospital.jpg"
+				id="Image2" alt="" align="top" border="0"
+				style="width: 365px; height: 322px;">
 		</div>
 		<div id="bv_Image3"
 			style="margin: 0; padding: 0; position: absolute; left: 88px; top: 752px; width: 200px; height: 71px; text-align: left; z-index: 10;">
-			<img src="${pageContext.request.contextPath}/resources/images/hippa.jpg" id="Image3" alt="" align="top"
-				border="0" style="width: 200px; height: 71px;">
+			<img
+				src="${pageContext.request.contextPath}/resources/images/hippa.jpg"
+				id="Image3" alt="" align="top" border="0"
+				style="width: 200px; height: 71px;">
 		</div>
 		<div id="bv_Image1"
 			style="margin: 0; padding: 0; position: absolute; left: 6px; top: 48px; width: 993px; height: 279px; text-align: left; z-index: 11;">
-			<img src="${pageContext.request.contextPath}/resources/images/hospital-art-toy.jpg" id="Image1" alt=""
-				align="top" border="0" style="width: 993px; height: 279px;">
+			<img
+				src="${pageContext.request.contextPath}/resources/images/hospital-art-toy.jpg"
+				id="Image1" alt="" align="top" border="0"
+				style="width: 993px; height: 279px;">
 		</div>
 	</div>
 </body>

@@ -191,11 +191,14 @@ a:hover {
 		</div>
 		<div id="bv_Form1"
 			style="position: absolute; background-color: #F0F0F0; left: 400px; top: 372px; width: 583px; height: 523px; z-index: 24">
+
+			<a href="${pageContext.request.contextPath}/logout.htm">Log Out</a>
+
 			<form:form commandName="createDoctor" method="post"
-				action="${pageContext.request.contextPath}/admin/create-doctor.htm" id="Form1"
-				onsubmit="return ValidateHospitalAdmin(this)">
-				<c:forEach items="${errorlist}" var="error"> 
-	        	    <div id="bv_Text2">${error}</div>       
+				action="${pageContext.request.contextPath}/admin/create-doctor.htm"
+				id="Form1" onsubmit="return ValidateHospitalAdmin(this)">
+				<c:forEach items="${errorlist}" var="error">
+					<div id="bv_Text2">${error}</div>
 				</c:forEach>
 				<form:input path="doctor.person.firstName" type="text" id="Editbox4"
 					style="position:absolute;left:394px;top:167px;width:148px;height:20px;border:1px #C0C0C0 solid;font-family:'Courier New';font-size:16px;z-index:0"
@@ -306,18 +309,24 @@ a:hover {
 		</div>
 		<div id="bv_Image2"
 			style="margin: 0; padding: 0; position: absolute; left: 18px; top: 372px; width: 365px; height: 322px; text-align: left; z-index: 25;">
-			<img src="${pageContext.request.contextPath}/resources/images/hospital.jpg" id="Image2" alt=""
-				align="top" border="0" style="width: 365px; height: 322px;">
+			<img
+				src="${pageContext.request.contextPath}/resources/images/hospital.jpg"
+				id="Image2" alt="" align="top" border="0"
+				style="width: 365px; height: 322px;">
 		</div>
 		<div id="bv_Image1"
 			style="margin: 0; padding: 0; position: absolute; left: 17px; top: 53px; width: 968px; height: 310px; text-align: left; z-index: 26;">
-			<img src="${pageContext.request.contextPath}/resources/images/hospital-art-toy.jpg" id="Image1" alt=""
-				align="top" border="0" style="width: 968px; height: 310px;">
+			<img
+				src="${pageContext.request.contextPath}/resources/images/hospital-art-toy.jpg"
+				id="Image1" alt="" align="top" border="0"
+				style="width: 968px; height: 310px;">
 		</div>
 		<div id="bv_Image3"
 			style="margin: 0; padding: 0; position: absolute; left: 88px; top: 752px; width: 200px; height: 71px; text-align: left; z-index: 27;">
-			<img src="${pageContext.request.contextPath}/resources/images/hippa.jpg" id="Image3" alt="" align="top"
-				border="0" style="width: 200px; height: 71px;">
+			<img
+				src="${pageContext.request.contextPath}/resources/images/hippa.jpg"
+				id="Image3" alt="" align="top" border="0"
+				style="width: 200px; height: 71px;">
 		</div>
 	</div>
 </body>

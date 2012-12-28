@@ -73,6 +73,9 @@ a:hover {
 		</div>
 		<div id="bv_Form1"
 			style="position: absolute; background-color: #F0F0F0; left: 400px; top: 372px; width: 583px; height: 523px; z-index: 8">
+			
+			<a href="${pageContext.request.contextPath}/logout.htm">Log Out</a>
+			
 			<form:form commandName="consent" method="post"
 				action="${pageContext.request.contextPath}/patient/create-consent.htm" id="Form1">
 				

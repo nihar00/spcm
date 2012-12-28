@@ -59,6 +59,9 @@ a:hover {
 		</div>
 		<div id="bv_Form1"
 			style="position: absolute; background-color: #F0F0F0; left: 391px; top: 372px; width: 591px; height: 523px; z-index: 4">
+			
+			<a href="${pageContext.request.contextPath}/logout.htm">Log Out</a>
+			
 			<form name="HospitalAdmin" method="post" action=""
 				enctype="text/plain" id="Form1">
 				<div id="bv_Image4"
