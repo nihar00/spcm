@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Unauthorized Access</title>
+<title>Re Login</title>
 <meta name="GENERATOR"
 	content="Created by BlueVoda Website builder http://www.bluevoda.com">
 <meta name="HOSTING"
@@ -79,8 +79,7 @@ a:hover {
 				</div>
 				<div id="bv_Text1"
 					style="margin: 0; padding: 0; position: absolute; left: 146px; top: 79px; width: 325px; height: 22px; text-align: left; z-index: 1;">
-					<h5>Unauthorized to access this resource, Kindly contact
-						System Administrator<a href="${pageContext.request.contextPath}/">Log In</a></h5>
+					<h5>Please Login Again<a href="${pageContext.request.contextPath}/">Log In</a></h5>
 				</div>
 				<div id="bv_Image5"
 					style="margin: 0; padding: 0; position: absolute; left: 176px; top: 140px; width: 256px; height: 256px; text-align: left; z-index: 2;">

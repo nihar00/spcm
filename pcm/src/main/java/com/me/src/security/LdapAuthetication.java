@@ -15,7 +15,8 @@ import javax.naming.directory.InitialDirContext;
  * @author prakashj
  */
 public class LdapAuthetication {
-    public static void autheticateUser(String username, String password) throws Exception {
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	public static void autheticateUser(String username, String password) throws Exception {
         Hashtable env = new Hashtable();
         env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
         env.put(Context.PROVIDER_URL, "ldap://localhost:10389/o=ess");

@@ -73,6 +73,8 @@
 	</bean>
 
 
+	<bean id="sessionService" class="com.me.src.session.SessionService">
+	</bean>
 
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"

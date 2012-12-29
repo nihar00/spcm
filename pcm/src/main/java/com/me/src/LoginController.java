@@ -29,6 +29,8 @@ import com.me.src.pojo.Person;
 import com.me.src.pojo.Role;
 import com.me.src.pojo.UserAccount;
 import com.me.src.security.HashGenerator;
+import com.me.src.session.SessionPojo;
+import com.me.src.session.SessionService;
 
 /**
  * Handles requests for the application home page.
@@ -55,6 +57,8 @@ public class LoginController {
 	PatientDao patientDao;
 	@Autowired
 	UserAccountDao userAccountDao;
+	@Autowired
+	SessionService sessionService;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String initForm(ModelMap model) {
@@ -66,11 +70,7 @@ public class LoginController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	//nihar addded model in function parameters
-	
-	//public String login(@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
 	@RequestMapping(value = "/login.htm", method = RequestMethod.POST)
-	//@SessionAttributes({"userAccount"})
 	public String processSubmit(HttpServletRequest request, @ModelAttribute("userAccount") UserAccount userAccount, BindingResult result, SessionStatus status,Model model, HttpSession session){
 		logger.info("Login controller");
 		
@@ -79,14 +79,16 @@ public class LoginController {
 				
 		logger.info("Username & Password: " + userAccount.getUsername() + " - " + HashGenerator.getHashValue(userAccount.getPassword()));		
 		
-		
-		//nihar changes
-		//nihar changes
-		
 		UserAccount ua = userAccountDao.getUserAccount(userAccount.getUsername().toLowerCase(),HashGenerator.getHashValue(userAccount.getPassword()));		
 		if(ua != null) {
-			request.getSession(true);			
+			request.getSession(true);	
+			
 			session.setAttribute("userAccount", ua);
+			
+			SessionPojo sessionPojo=new SessionPojo();
+			
+			sessionService.addSessionPojoinService(ua.getUsername(), sessionPojo);
+		
 			//logger.info(ua.getPerson().getFirstName() + " " + ua.getPerson().getHospital().getName());
 			
 			if(ua.getRole().equals(Role.GlobalAdmin.toString())) {
