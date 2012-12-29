@@ -166,13 +166,13 @@ a:hover {
 				</div>
 				
 				<div id="bv_Text3"
-					style="margin: 0; padding: 0; position: absolute; left: 132px; top: 430px; width: 150px; height: 16px; text-align: left; z-index: 5;">
+					style="margin: 0; padding: 0; position: absolute; left: 132px; top: 460px; width: 150px; height: 16px; text-align: left; z-index: 5;">
 					<font style="font-size: 13px" color="#000000" face="Arial">Consent
 						Type</font>
 				</div>
 
 				<div
-					style="position: absolute; left: 315px; top: 430px; width: 148px; height: 18px; border: 1px #C0C0C0 solid; z-index: 6">
+					style="position: absolute; left: 315px; top: 465px; width: 148px; height: 18px; border: 1px #C0C0C0 solid; z-index: 6">
 
 					<form:select path="consentType" name="consentType" size="1"
 						id="Combobox2"
@@ -186,7 +186,7 @@ a:hover {
 
 				<input type="submit" id="Button1" name="Request Record"
 					value="Request Record"
-					style="position: absolute; left: 211px; top: 470px; width: 136px; height: 24px; font-family: Arial; font-size: 13px; z-index: 3">
+					style="position: absolute; left: 211px; top: 490px; width: 136px; height: 24px; font-family: Arial; font-size: 13px; z-index: 3">
 				<div id="bv_Text2"
 					style="margin: 0; padding: 0; position: absolute; left: 131px; top: 137px; width: 150px; height: 16px; text-align: left; z-index: 4;">
 					<font style="font-size: 13px" color="#000000" face="Arial">Select
