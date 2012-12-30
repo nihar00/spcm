@@ -301,14 +301,14 @@ a:hover {
 					<img src="${pageContext.request.contextPath}/resources/images/admin-icon-om.png" id="Image4" alt=""
 						align="top" border="0" style="width: 101px; height: 101px;">
 				</div>
-				<input type="file" id="FileUpload1"
+				<!-- <input type="file" id="FileUpload1"
 					style="position: absolute; left: 272px; top: 125px; width: 148px; height: 20px; font-family: Courier New; font-size: 13px; z-index: 22"
-					name="FileUpload1" />
-				<div id="bv_Text1"
+					name="FileUpload1" /> -->
+				<!-- <div id="bv_Text1"
 					style="margin: 0; padding: 0; position: absolute; left: 164px; top: 131px; width: 103px; height: 16px; text-align: left; z-index: 23;">
 					<font style="font-size: 13px" color="#000000" face="Arial">&nbsp;&nbsp;
 						&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; Image</font>
-				</div>
+				</div> -->
 				<div id="bv_Text2"
 					style="margin: 0; padding: 0; position: absolute; left: 232px; top: 79px; width: 139px; height: 22px; text-align: left; z-index: 24;">
 					<font style="font-size: 19px" color="#000000" face="Arial"><b>Patient

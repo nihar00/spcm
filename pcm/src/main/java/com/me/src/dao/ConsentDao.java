@@ -23,7 +23,7 @@ public class ConsentDao extends MappedModelDao<Consent> {
 		Query query = sessionFactory.getCurrentSession().createQuery("from Consent consent where consent.patient.id=:patientId");
 		query.setParameter("patientId",patientId);
 		List<Consent> consents = query.list();
-		if(consents!=null)
+		if(!consents.isEmpty())
 		{
 			return consents.get(0);
 		}

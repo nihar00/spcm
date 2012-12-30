@@ -106,7 +106,7 @@ public class RequestRecordController {
 		Consent consent=consentDao.getConsentFromPatientId(request.getPatientId());
 		logger.info("Consent Type for the Patient is "+ consent.getConsentType());
 		
-		if(consent.getConsentType().equalsIgnoreCase(request.getConsentType()) && request.getRecordType().contains(consent.getRecordType()))
+		if(consent.getConsentType().equalsIgnoreCase(request.getConsentType()))
 		{
 			logger.info("Consent Match");
 			/*model.addAttribute("medical",medicalRecordDao.listMedicalRecord(request.getPatientId()));*/

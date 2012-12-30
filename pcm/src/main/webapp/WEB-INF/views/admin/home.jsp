@@ -69,7 +69,7 @@ a:hover {
 					style="margin: 0; padding: 0; position: absolute; left: 208px; top: 112px; width: 106px; height: 34px; text-align: center; z-index: 1;">
 					<font style="font-size: 13px;" color="#000000" face="Arial">
 						<a href="${pageContext.request.contextPath}/admin/create-patient.htm">Create Patient</a><br>
-					<a href="${pageContext.request.contextPath}/admin/create-doctor.htm">Create Doctor</a>
+					<a href="${pageContext.request.contextPath}/admin/create-doctor.htm">Create Doctor</a><br>
 					<a href="${pageContext.request.contextPath}/logout.htm">Log Out</a>
 					</font>
 				</div>

@@ -1,5 +1,9 @@
 package com.me.src;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -113,7 +117,9 @@ public class FrontControllerInterceptor extends HandlerInterceptorAdapter {
 				}
 				
 				//Adding pages visited by the client into session pojo
-				sessionPojo.getListOfPageAccessed().add(request.getRequestURI());
+				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+				Date date = new Date();
+				sessionPojo.getListOfPageAccessed().add(request.getRequestURI()+" "+dateFormat.format(date));
 
 				Cookie c= getStepIdCookie(request);
 				if(c==null)

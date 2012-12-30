@@ -1,5 +1,11 @@
 package com.me.src.doctor;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -108,10 +114,50 @@ public class DoctorCreateConsentController {
 		consent.setHospital(hospitalDao.findById(ua.getPerson().getHospital().getId()));
 		//nihar 4 changes
 		
+		//new addition
+		Consent c=consentDao.getConsentFromPatientId(patient.getId());
+		//new addition
+		
+		if(c==null)
+		{
 		consentDao.saveOrUpdate(consent);
+		}
+		else
+		{
+			consent.setId(c.getId());
+			consentDao.saveOrUpdate(consent);	
+			insertConsentRecordBeforeUpdateToFile(consent);
+		}
 		
 		model.addAttribute("patientlist", patientDao.listPatient(ua.getPerson().getHospital().getId()));
 		return new ModelAndView("doctor/home");
+	}
+	
+	private void insertConsentRecordBeforeUpdateToFile(Consent consent){
+		File file =new File("Consent.txt");
+		if(!file.exists()){
+			try {
+				file.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		FileWriter fileWritter;
+		try {
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			Date date = new Date();
+			fileWritter = new FileWriter(file.getName(),true);
+			BufferedWriter bufferWritter = new BufferedWriter(fileWritter);
+			bufferWritter.write(System.getProperty( "line.separator" )+"Consent ID :"+consent.getId());
+			bufferWritter.write(System.getProperty( "line.separator" )+"Updated By: "+consent.getConsentCreatedBy().getUsername());
+			bufferWritter.write(System.getProperty( "line.separator" )+"Date Accessed on: "+dateFormat.format(date));
+			bufferWritter.close();
+		}
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
