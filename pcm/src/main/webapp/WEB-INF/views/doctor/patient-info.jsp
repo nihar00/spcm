@@ -115,7 +115,6 @@ a:hover {
 							
 							<td>${pl.prescription}</td>
 							
-							<td>${pl.recordType}</td>
 						</tr>
 
 					</c:forEach>

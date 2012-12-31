@@ -86,7 +86,7 @@ a:hover {
 						align="top" border="0" style="width: 101px; height: 101px;">
 				</div>
 				<div id="bv_TextMenu1"
-					style="margin: 0; padding: 0; position: absolute; left: 236px; top: 197px; width: 150px; height: 66px; text-align: center; z-index: 1;">
+					style="margin: 0; padding: 0; position: absolute; left: 236px; top: 260px; width: 150px; height: 66px; text-align: center; z-index: 1;">
 					<font style="font-size: 13px;" color="#000000" face="Arial">
 
 						<input type="submit" value="Treat Patient" formaction="${pageContext.request.contextPath}/doctor/create-medical-record.htm"/>
@@ -96,10 +96,10 @@ a:hover {
 				</div>
 
 				<div
-					style="position: absolute; left: 235px; top: 142px; width: 148px; height: 18px; border: 1px #C0C0C0 solid; z-index: 2">
+					style="position: absolute; left: 235px; top: 142px; width: 160px; height: 100px; border: 1px #C0C0C0 solid; z-index: 2">
 					
 					<c:if test="${!empty patientlist}">
-						<select name="patientId" id="Combobox1" size=5
+						<select name="patientId" id="Combobox1" size="6"
 							style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; border-width: 0px; font-family: 'Courier New'; font-size: 16px;">
 							<c:forEach items="${patientlist}" var="pl">
 								<option value="${pl.id}">${pl.person.firstName} ${pl.person.lastName}</option>
