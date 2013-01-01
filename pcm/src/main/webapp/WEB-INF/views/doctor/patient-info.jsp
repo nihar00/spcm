@@ -104,7 +104,7 @@ a:hover {
 						<th>Record Date</th>
 						<th>Description</th>
 						<th>Prescription</th>
-						<th>Record Type</th>
+						
 					</tr>
 					<c:forEach items="${medical}" var="pl">
 

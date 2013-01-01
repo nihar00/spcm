@@ -36,7 +36,7 @@ import com.me.src.pojo.command.RecordRequestCommand;
 //nihar 4 changes
 public class RequestRecordController {
 	private static final Logger logger = LoggerFactory.getLogger(RequestRecordController.class);
-		
+
 	@Autowired
 	ConsentRequestDao consentRequestDao;
 	@Autowired
@@ -49,8 +49,8 @@ public class RequestRecordController {
 	HospitalDao hospitalDao;
 	@Autowired
 	MedicalRecordDao medicalRecordDao;
-	
-	
+
+
 	@RequestMapping(value = "/request-record.htm", method = RequestMethod.GET)
 	public String initForm(ModelMap model, @RequestParam("patientId") long patientId) {
 		RecordRequestCommand request = new RecordRequestCommand();
@@ -58,30 +58,30 @@ public class RequestRecordController {
 		Patient patient = patientDao.findById(patientId);
 		model.addAttribute("hospitalList",hospitalDao.findAll());
 		//nihar 4 changes
-		
+
 		model.addAttribute("request", request);
-		
+
 		//nihar 4 changes
 		model.addAttribute("patient", patient);
 		logger.info("for patient: " + patient.getId());
 		//nihar 4 changes
-		
+
 		return "doctor/record-request";
 	}
-	
+
 	@RequestMapping(value = "/request-record.htm", method = RequestMethod.POST)
 	public String processSubmit(@ModelAttribute("request") RecordRequestCommand request,@ModelAttribute("patient") Patient patient, BindingResult result,  @RequestParam("hospitalId") long hospitalId,SessionStatus status,HttpSession session,Model model) {		
-		
+
 		ConsentRequest consentRequest = new ConsentRequest();
 		consentRequest.setConsentType(request.getConsentType());
-		
+
 		int recordTypes = 0;
 		for(String s : request.getRecordType()) {
 			int record = Integer.parseInt(s);
 			recordTypes |= record;
 		}
 		consentRequest.setRecordType(recordTypes);
-		
+
 		//nihar 4 changes
 		UserAccount ua = (UserAccount)session.getAttribute("userAccount");
 		Hospital h=hospitalDao.findById(hospitalId);
@@ -89,38 +89,46 @@ public class RequestRecordController {
 		logger.info("PatientId in consent creation by doctor request: " + patient.getId());
 		logger.info( " user: " + ua.getPerson().getFirstName());
 		logger.info("Hospital record is requested " + h.getName());
-		
-		
+
+
 		consentRequest.setPatient(patientDao.findById(request.getPatientId()));
 		consentRequest.setRecordProvider(h);
 		consentRequest.setRecordRequester(hospitalDao.findById(ua.getPerson().getHospital().getId()));
 		consentRequest.setRequestByUser(ua);
-		
+
 		//nihar 4 changes
-		
+
 		consentRequestDao.saveOrUpdate(consentRequest);
 		model.addAttribute("patientlist", patientDao.listPatient(ua.getPerson().getHospital().getId()));
-		
+
 		//code for displaying patient details
 		model.addAttribute("patient",patientDao.findById(request.getPatientId()));
 		Consent consent=consentDao.getConsentFromPatientId(request.getPatientId());
-		logger.info("Consent Type for the Patient is "+ consent.getConsentType());
-		
-		if(consent.getConsentType().equalsIgnoreCase(request.getConsentType()))
-		{
-			logger.info("Consent Match");
-			/*model.addAttribute("medical",medicalRecordDao.listMedicalRecord(request.getPatientId()));*/
-			model.addAttribute("medical",medicalRecordDao.listMedicalRecord(request.getPatientId(),recordTypes));
-			return "doctor/patient-info";
+		//logger.info("Consent Type for the Patient is "+ consent.getConsentType());
+
+		if(consent!=null){
+			if(consent.getConsentType().equalsIgnoreCase(request.getConsentType()))
+			{
+				logger.info("Consent Match");
+				/*model.addAttribute("medical",medicalRecordDao.listMedicalRecord(request.getPatientId()));*/
+				model.addAttribute("medical",medicalRecordDao.listMedicalRecord(request.getPatientId(),recordTypes));
+				return "doctor/patient-info";
+
+			}
+			else
+			{
+				logger.info("No Permission");
+				return "doctor/home";
+			}
 			
 		}
 		else
 		{
-			logger.info("No Permission");
+			logger.info("No Consent Found");
 			return "doctor/home";
 		}
-		
-		
+
+
 	}
-	
+
 }
