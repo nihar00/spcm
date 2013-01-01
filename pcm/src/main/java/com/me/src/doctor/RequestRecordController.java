@@ -1,5 +1,7 @@
 package com.me.src.doctor;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -25,6 +27,7 @@ import com.me.src.dao.UserAccountDao;
 import com.me.src.pojo.Consent;
 import com.me.src.pojo.ConsentRequest;
 import com.me.src.pojo.Hospital;
+import com.me.src.pojo.MedicalRecord;
 import com.me.src.pojo.Patient;
 import com.me.src.pojo.UserAccount;
 import com.me.src.pojo.command.RecordRequestCommand;
@@ -111,7 +114,19 @@ public class RequestRecordController {
 			{
 				logger.info("Consent Match");
 				/*model.addAttribute("medical",medicalRecordDao.listMedicalRecord(request.getPatientId()));*/
-				model.addAttribute("medical",medicalRecordDao.listMedicalRecord(request.getPatientId(),recordTypes));
+				ArrayList<MedicalRecord> record=(ArrayList<MedicalRecord>) medicalRecordDao.listMedicalRecord(request.getPatientId());
+				ArrayList<MedicalRecord> temp = new ArrayList<>();
+				int consentRecordType=Integer.parseInt(consent.getRecordType());
+				
+				for (MedicalRecord medicalRecord : record) {
+					if((medicalRecord.getRecordType() & (consentRecordType & recordTypes))!=0){
+						temp.add(medicalRecord);
+						logger.info("Record Type: "+medicalRecord.getRecordType());
+						logger.info(" Types: "+consent.getRecordType());
+					}
+				}
+				//model.addAttribute("medical",medicalRecordDao.listMedicalRecord(request.getPatientId(),recordTypes));
+				model.addAttribute("medical",temp);
 				return "doctor/patient-info";
 
 			}

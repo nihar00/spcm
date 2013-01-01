@@ -16,12 +16,20 @@ public class MedicalRecordDao extends MappedModelDao<MedicalRecord> {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<MedicalRecord> listMedicalRecord(long patientId,int recordType) {
+	/*public List<MedicalRecord> listMedicalRecord(long patientId,int recordType) {
 		// TODO Auto-generated method stub
 
 		Query query = (Query)sessionFactory.getCurrentSession().createQuery("from MedicalRecord medicalrecord where medicalrecord.patient.id=:patientId and medicalrecord.recordType=:recordType");
 		query.setParameter("patientId",patientId);	
 		query.setParameter("recordType", recordType);
+		return query.list();	
+	}*/
+	
+	public List<MedicalRecord> listMedicalRecord(long patientId) {
+		// TODO Auto-generated method stub
+
+		Query query = (Query)sessionFactory.getCurrentSession().createQuery("from MedicalRecord medicalrecord where medicalrecord.patient.id=:patientId");
+		query.setParameter("patientId",patientId);	
 		return query.list();	
 	}
 }
