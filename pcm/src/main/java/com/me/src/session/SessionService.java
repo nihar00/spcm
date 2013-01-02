@@ -7,7 +7,7 @@ public class SessionService {
 	private HashMap<String, SessionPojo> sessionService;
 
 	public SessionService() {
-		sessionService=new HashMap<>();
+		sessionService=new HashMap<String, SessionPojo>();
 	}
 
 	public HashMap<String, SessionPojo> getSessionService() {

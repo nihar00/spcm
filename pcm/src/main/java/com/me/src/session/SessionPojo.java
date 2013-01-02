@@ -16,7 +16,7 @@ public class SessionPojo {
 	public SessionPojo() {
 
 		this.recentActivityTime=new Date().getSeconds();
-		this.listOfPageAccessed=new ArrayList<>();
+		this.listOfPageAccessed=new ArrayList<String>();
 
 	}
 
